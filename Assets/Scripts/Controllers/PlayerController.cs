@@ -13,4 +13,8 @@ using UnityEngine;
         public override float RetrieveMoveInput() {
             return Input.GetAxisRaw("Horizontal");
         }
+
+        public override bool RetrieveDashInputDown() {
+            return Input.GetKeyDown(KeyCode.LeftShift);
+        }
     }
