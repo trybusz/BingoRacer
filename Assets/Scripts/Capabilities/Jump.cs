@@ -12,9 +12,10 @@ public class Jump : MonoBehaviour
     public int jumpsAllowed = 2;
     public float jumpHeight = 3.33f;
     public float risingGravity = 3f;
+    public float stopRisingGravity = 8f;
     public float fallingGravity = 4f;
     public float restingGravity = 1f;
-    public float jumpBufferTime = .1f;
+    public float jumpBufferTime = .2f;
     public float coyoteTime = .08f;
 
     // state
@@ -45,8 +46,9 @@ public class Jump : MonoBehaviour
 
     void GetInput() 
     {
+        bool jumpDown = input.RetrieveJumpInputDown();
         jumpPressed = input.RetrieveJumpInput();
-        if (jumpPressed) {
+        if (jumpDown) {
             jumpDesired = true;
             endJumpBuffer = Time.timeSinceLevelLoad + jumpBufferTime;
         }
@@ -57,6 +59,9 @@ public class Jump : MonoBehaviour
 
     void HandleJump() 
     {
+        // had to check if player just jumped because in the next frame,
+        // the player would usually still be on the ground and would get
+        // jump count reset to 0. This solution is probably not robust.
         if (ground.OnGround && !justJumped) {
             endGroundTime = Time.timeSinceLevelLoad + coyoteTime;
             jumpsUsed = 0;
@@ -65,7 +70,6 @@ public class Jump : MonoBehaviour
             justJumped = false;
         }
 
-        // JUMP IF ALLOWED
         if (jumpDesired) {
             if (ground.OnGround || Time.timeSinceLevelLoad <= endGroundTime) {
                 if (jumpsUsed < jumpsAllowed) {
@@ -88,8 +92,13 @@ public class Jump : MonoBehaviour
         if (ground.OnGround) {
             body.gravityScale = restingGravity;
         }
-        else if (body.velocity.y >= 0f) { //technically, they could release and re-press to slow their decent again while still rising not sure if we care about that.
-            body.gravityScale = risingGravity;
+        else if (body.velocity.y >= 0f) {
+            if (jumpPressed) {
+                body.gravityScale = risingGravity;
+            }
+            else {
+                body.gravityScale = stopRisingGravity;
+            }
         }
         else {
             body.gravityScale = fallingGravity;
