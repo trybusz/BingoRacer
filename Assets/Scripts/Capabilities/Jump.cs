@@ -1,76 +1,109 @@
 using UnityEngine;
 
-    //[RequireComponent(typeof(Controller))]
-    public class Jump : MonoBehaviour {
+public class Jump : MonoBehaviour
+{
+    // objects
+
     [SerializeField] private InputController input = null;
-    [SerializeField, Range(0f, 10f)] private float _jumpHeight = 10f;
-        [SerializeField, Range(0, 5)] private int _maxAirJumps = 1;
-        [SerializeField, Range(0f, 5f)] private float _downwardMovementMultiplier = 4f;
-        [SerializeField, Range(0f, 5f)] private float _upwardMovementMultiplier = 3.0f;
+    Rigidbody2D body;
+    Ground ground;
+    
+    // physics characteristics
+    public int jumpsAllowed = 2;
+    public float jumpHeight = 3.33f;
+    public float risingGravity = 3f;
+    public float fallingGravity = 4f;
+    public float restingGravity = 1f;
+    public float jumpBufferTime = .1f;
+    public float coyoteTime = .08f;
 
-        //private Controller _controller;
-        private Rigidbody2D _body;
-        private Ground _ground;
-        private Vector2 _velocity;
+    // state
+    public float endJumpBuffer = -1f;
+    public float endGroundTime = -1f;
+    public bool jumpPressed = false;
+    public bool jumpDesired = false;
+    public int jumpsUsed = 0;
+    public bool justJumped = false;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        body = GetComponent<Rigidbody2D>();
+        ground = GetComponent<Ground>();
+    }
 
-        private int _jumpPhase;
-        private float _defaultGravityScale, _jumpSpeed;
+    void Update()
+    {
+        GetInput();
+    }
 
-        private bool _desiredJump, _onGround;
+    void FixedUpdate()
+    {
+        HandleJump();
+        HandleGravity();
+    }
 
+    void GetInput() 
+    {
+        jumpPressed = input.RetrieveJumpInput();
+        if (jumpPressed) {
+            jumpDesired = true;
+            endJumpBuffer = Time.timeSinceLevelLoad + jumpBufferTime;
+        }
+        else if (Time.timeSinceLevelLoad > endJumpBuffer) {
+            jumpDesired = false;
+        }
+    }
 
-        // Start is called before the first frame update
-        void Awake() {
-            _body = GetComponent<Rigidbody2D>();
-            _ground = GetComponent<Ground>();
-            //_controller = GetComponent<Controller>();
-
-            _defaultGravityScale = 1f;
+    void HandleJump() 
+    {
+        if (ground.OnGround && !justJumped) {
+            endGroundTime = Time.timeSinceLevelLoad + coyoteTime;
+            jumpsUsed = 0;
+        }
+        else {
+            justJumped = false;
         }
 
-        // Update is called once per frame
-        void Update() {
-            _desiredJump |= /*_controller.*/input.RetrieveJumpInput();
-        }
-
-        private void FixedUpdate() {
-            _onGround = _ground.OnGround;
-            _velocity = _body.velocity;
-
-            if (_onGround) {
-                _jumpPhase = 0;
-            }
-
-            if (_desiredJump) {
-                _desiredJump = false;
-                JumpAction();
-            }
-
-            if (_body.velocity.y > 0) {
-                _body.gravityScale = _upwardMovementMultiplier;
-            }
-            else if (_body.velocity.y < 0) {
-                _body.gravityScale = _downwardMovementMultiplier;
-            }
-            else if (_body.velocity.y == 0) {
-                _body.gravityScale = _defaultGravityScale;
-            }
-
-            _body.velocity = _velocity;
-        }
-        private void JumpAction() {
-            if (_onGround || _jumpPhase < _maxAirJumps) {
-                _jumpPhase += 1;
-
-                _jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * _jumpHeight);
-
-                if (_velocity.y > 0f) {
-                    _jumpSpeed = Mathf.Max(_jumpSpeed - _velocity.y, 0f);
+        // JUMP IF ALLOWED
+        if (jumpDesired) {
+            if (ground.OnGround || Time.timeSinceLevelLoad <= endGroundTime) {
+                if (jumpsUsed < jumpsAllowed) {
+                    performJump();
                 }
-                else if (_velocity.y < 0f) {
-                    _jumpSpeed += Mathf.Abs(_body.velocity.y);
+            }
+            else {
+                if (jumpsUsed == 0) {
+                    jumpsUsed = 1;
                 }
-                _velocity.y += _jumpSpeed;
+                if (jumpsUsed < jumpsAllowed) {
+                    performJump();
+                }
             }
         }
     }
+
+    void HandleGravity() {
+        Vector2 velocity = body.velocity;
+        if (ground.OnGround) {
+            body.gravityScale = restingGravity;
+        }
+        else if (body.velocity.y >= 0f) { //technically, they could release and re-press to slow their decent again while still rising not sure if we care about that.
+            body.gravityScale = risingGravity;
+        }
+        else {
+            body.gravityScale = fallingGravity;
+        }
+    }
+
+    void performJump() 
+    {
+        justJumped = true;
+        jumpsUsed += 1;
+        jumpDesired = false;
+        float jumpSpeed = Mathf.Sqrt(19.6f * risingGravity * jumpHeight);
+        if (jumpSpeed > body.velocity.y) {
+            body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+        }
+    }
+}

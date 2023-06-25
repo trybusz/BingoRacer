@@ -1,39 +1,38 @@
 using UnityEngine;
 
-//[RequireComponent(typeof(Controller))]
-public class Move : MonoBehaviour {
+public class Move : MonoBehaviour
+{
+    // objects
     [SerializeField] private InputController input = null;
-    [SerializeField, Range(0f, 100f)] private float _maxSpeed = 9f;
-    [SerializeField, Range(0f, 100f)] private float _maxAcceleration = 50f;
-    [SerializeField, Range(0f, 100f)] private float _maxAirAcceleration = 40f;
+    Rigidbody2D body;
+    Ground ground;
+    
+    // physics characteristics
+    float maxSpeed = 9f;
+    float maxGroundAcceleration = 50f;
+    float maxAirAcceleration = 40f;
 
-    //private Controller _controller;
-    private Vector2 _direction, _desiredVelocity, _velocity;
-    private Rigidbody2D _body;
-    private Ground _ground;
-
-    private float _maxSpeedChange, _acceleration;
-    private bool _onGround;
-
-    private void Awake() {
-        _body = GetComponent<Rigidbody2D>();
-        _ground = GetComponent<Ground>();
-        //_controller = GetComponent<Controller>();
+    // state
+    public float direction;
+    public Vector2 velocity;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        body = GetComponent<Rigidbody2D>();
+        ground = GetComponent<Ground>();
     }
 
-    private void Update() {
-        _direction.x = /*_controller.*/input.RetrieveMoveInput();
-        _desiredVelocity = new Vector2(_direction.x, 0f) * Mathf.Max(_maxSpeed - _ground.Friction, 0f);
+    void Update()
+    {
+        direction = input.RetrieveMoveInput();
     }
 
-    private void FixedUpdate() {
-        _onGround = _ground.OnGround;
-        _velocity = _body.velocity;
-
-        _acceleration = _onGround ? _maxAcceleration : _maxAirAcceleration;
-        _maxSpeedChange = _acceleration * Time.deltaTime;
-        _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange);
-
-        _body.velocity = _velocity;
+    void FixedUpdate()
+    {
+        float desiredHorizontalSpeed = direction * Mathf.Max(maxSpeed - ground.Friction, 0f);
+        float horizontalAcceleration = ground.OnGround ? maxGroundAcceleration : maxAirAcceleration;
+        float maxSpeedChange = horizontalAcceleration * Time.deltaTime;
+        body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, desiredHorizontalSpeed, maxSpeedChange), body.velocity.y);
     }
 }
