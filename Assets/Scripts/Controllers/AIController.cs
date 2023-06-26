@@ -17,4 +17,8 @@ using UnityEngine;
         public override bool RetrieveDashInputDown() {
             return true;
         }
+
+        public override bool RetrieveCheckpointInputDown() {
+            return true;
+        }
     }

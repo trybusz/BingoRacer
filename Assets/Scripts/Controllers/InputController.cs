@@ -5,4 +5,5 @@ using UnityEngine;
         public abstract bool RetrieveJumpInput();
         public abstract float RetrieveMoveInput();
         public abstract bool RetrieveDashInputDown();
+        public abstract bool RetrieveCheckpointInputDown();
     }
