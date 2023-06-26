@@ -11,10 +11,10 @@ public class Move : MonoBehaviour
     
     // physics characteristics
     float maxSpeed = 10f;
-    float maxGroundAcceleration = 50f;
-    float maxAirAcceleration = 40f;
-    float dashDuration = .2f;
-    float dashDistance = 4f;
+    float maxGroundAcceleration = 90f;
+    float maxAirAcceleration = 75f;
+    float dashDuration = .15f;
+    float dashDistance = 3f;
     bool dashEnabled = true;
     bool dashResetsInAir = false;
     float dashCooldown = .5f;

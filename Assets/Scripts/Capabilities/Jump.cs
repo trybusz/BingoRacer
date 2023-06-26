@@ -11,9 +11,9 @@ public class Jump : MonoBehaviour
     // physics characteristics
     public int jumpsAllowed = 2;
     public float jumpHeight = 3.33f;
-    public float risingGravity = 3f;
-    public float stopRisingGravity = 8f;
-    public float fallingGravity = 4f;
+    public float risingGravity = 7f;
+    public float stopRisingGravity = 20f;
+    public float fallingGravity = 10f;
     public float restingGravity = 1f;
     public float dashingGravity = 0f;
     public float jumpBufferTime = .2f;
@@ -91,12 +91,12 @@ public class Jump : MonoBehaviour
 
     void HandleGravity() {
         Vector2 velocity = body.velocity;
-        if (ground.OnGround) {
-            body.gravityScale = restingGravity;
-        }
-        else if (isDashing) {
+        if (isDashing) {
             body.velocity = new Vector2(body.velocity.x, 0.0f);
             body.gravityScale = dashingGravity;
+        }
+        else if (ground.OnGround) {
+            body.gravityScale = restingGravity;
         }
         else if (body.velocity.y >= 0f) {
             if (jumpPressed) {
