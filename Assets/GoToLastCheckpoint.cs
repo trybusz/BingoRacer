@@ -16,7 +16,7 @@ public class GoToLastCheckpoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (input.RetrieveCheckpointInputDown) {
+        if (input.RetrieveCheckpointInputDown()) {
             this.gameObject.transform.position = lastCheckpoint.transform.position;
         }
     }
