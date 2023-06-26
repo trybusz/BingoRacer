@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    Jump jumpScript;
+
     // objects
     [SerializeField] private InputController input = null;
     Rigidbody2D body;
     Ground ground;
     
     // physics characteristics
-    float maxSpeed = 9f;
+    float maxSpeed = 10f;
     float maxGroundAcceleration = 50f;
     float maxAirAcceleration = 40f;
     float dashDuration = .2f;
@@ -34,6 +36,7 @@ public class Move : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
+        jumpScript = GetComponent<Jump>();
     }
 
     void Update()
@@ -71,6 +74,7 @@ public class Move : MonoBehaviour
             dashDesired = false;
             hasDash = false;
             inDash = true;
+            jumpScript.isDashing = true;
             refreshDashTime = Time.timeSinceLevelLoad + dashCooldown;
             endDashTime = Time.timeSinceLevelLoad + dashDuration;
             float dashVelocity = Mathf.Max((dashDistance / dashDuration) * 2 - maxSpeed, maxSpeed);
@@ -82,6 +86,7 @@ public class Move : MonoBehaviour
             body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, maxSpeed * facing, dashDeceleration), body.velocity.y);
             if (Time.timeSinceLevelLoad >= endDashTime) {
                 inDash = false;
+                jumpScript.isDashing = false;
             }
             return true;
         }

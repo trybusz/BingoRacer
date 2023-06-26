@@ -15,6 +15,6 @@ using UnityEngine;
         }
 
         public override bool RetrieveDashInputDown() {
-            return Input.GetKeyDown(KeyCode.LeftShift);
+            return Input.GetKeyDown(KeyCode.S);
         }
     }

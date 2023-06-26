@@ -15,6 +15,7 @@ public class Jump : MonoBehaviour
     public float stopRisingGravity = 8f;
     public float fallingGravity = 4f;
     public float restingGravity = 1f;
+    public float dashingGravity = 0f;
     public float jumpBufferTime = .2f;
     public float coyoteTime = .08f;
 
@@ -25,6 +26,7 @@ public class Jump : MonoBehaviour
     public bool jumpDesired = false;
     public int jumpsUsed = 0;
     public bool justJumped = false;
+    public bool isDashing = false;
     
     // Start is called before the first frame update
     void Start()
@@ -91,6 +93,10 @@ public class Jump : MonoBehaviour
         Vector2 velocity = body.velocity;
         if (ground.OnGround) {
             body.gravityScale = restingGravity;
+        }
+        else if (isDashing) {
+            body.velocity = new Vector2(body.velocity.x, 0.0f);
+            body.gravityScale = dashingGravity;
         }
         else if (body.velocity.y >= 0f) {
             if (jumpPressed) {
