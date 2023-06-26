@@ -3483,8 +3483,8 @@ GameObject:
   - component: {fileID: 1957126715}
   - component: {fileID: 1957126713}
   - component: {fileID: 1957126721}
-  - component: {fileID: 1957126720}
   - component: {fileID: 1957126722}
+  - component: {fileID: 1957126723}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -3710,35 +3710,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1957126720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957126712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9f1f8996df916c4787600bd6023ca6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: ee325a352a69fbc4ca3e21a3331069fc, type: 2}
-  jumpsAllowed: 2
-  jumpHeight: 3.33
-  risingGravity: 3
-  stopRisingGravity: 8
-  fallingGravity: 4
-  restingGravity: 1
-  dashingGravity: 0
-  jumpBufferTime: 0.2
-  coyoteTime: 0.08
-  endJumpBuffer: -1
-  endGroundTime: -1
-  jumpPressed: 0
-  jumpDesired: 0
-  jumpsUsed: 0
-  justJumped: 0
-  isDashing: 0
 --- !u!114 &1957126721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3752,15 +3723,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: ee325a352a69fbc4ca3e21a3331069fc, type: 2}
-  direction: 0
+  inputDirection: 0
   facing: 1
-  endDashTime: -1
+  dashDirection: 1
+  hasDash: 1
+  dashPressed: 0
   dashDesired: 0
   endDashBuffer: -1
-  refreshDashTime: -1
-  hasDash: 1
+  endDashTime: -1
   dashDeceleration: 0
   inDash: 0
+  isSprinting: 0
+  sprintVelocity: 0
+  speed: 0
+  fastedSpeed: 0
 --- !u!114 &1957126722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3775,6 +3751,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: ee325a352a69fbc4ca3e21a3331069fc, type: 2}
   checkpointPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &1957126723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957126712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f1f8996df916c4787600bd6023ca6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: ee325a352a69fbc4ca3e21a3331069fc, type: 2}
+  jumpsAllowed: 2
+  jumpHeight: 3.33
+  risingGravity: 7
+  stopRisingGravity: 20
+  fallingGravity: 10
+  restingGravity: 1
+  dashingGravity: 0
+  jumpBufferTime: 0.2
+  coyoteTime: 0.08
+  endJumpBuffer: -1
+  endGroundTime: -1
+  jumpPressed: 0
+  jumpDesired: 0
+  jumpsUsed: 0
+  justJumped: 0
+  isDashing: 0
 --- !u!1001 &1967222031
 PrefabInstance:
   m_ObjectHideFlags: 0

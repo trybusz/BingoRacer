@@ -16,20 +16,23 @@ public class Move : MonoBehaviour
     float dashDuration = .15f;
     float dashDistance = 3f;
     bool dashEnabled = true;
-    bool dashResetsInAir = false;
-    float dashCooldown = .5f;
     float dashBufferTime = .2f;
 
     // state
-    public float direction = 0f;
+    public float inputDirection = 0f;
     public float facing = 1f;
-    public float endDashTime = -1f;
+    public float dashDirection = 1f;
+    public bool hasDash = true;
+    public bool dashPressed = false;
     public bool dashDesired = false;
     public float endDashBuffer = -1f;
-    public float refreshDashTime = -1f;
-    public bool hasDash = true;
+    public float endDashTime = -1f;
     public float dashDeceleration;
     public bool inDash = false;
+    public bool isSprinting = false;
+    public float sprintVelocity = 0;
+    public float speed = 0;
+    public float fastedSpeed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,10 @@ public class Move : MonoBehaviour
 
     void FixedUpdate()
     {
+        speed = Mathf.Abs(body.velocity.x);
+        if (speed > fastedSpeed) {
+            fastedSpeed = speed;
+        }
         if (!HandleDash()) {
             HandleMovement();
         }
@@ -53,11 +60,12 @@ public class Move : MonoBehaviour
 
     void GetInput()
     {
-        direction = input.RetrieveMoveInput();
-        if (direction != 0 && !inDash) {
-            facing = direction;
+        inputDirection = input.RetrieveMoveInput();
+        if (inputDirection != 0 && !inDash) {
+            facing = inputDirection;
         }
         if (dashEnabled) {
+            dashPressed = input.RetrieveDashInput();
             if (input.RetrieveDashInputDown()) {
                 dashDesired = true;
                 endDashBuffer = Time.timeSinceLevelLoad + dashBufferTime;
@@ -68,33 +76,44 @@ public class Move : MonoBehaviour
         }
     }
 
+    // This function needs to be broken down into smaller pieces. It is confusing
     bool HandleDash() {
-        hasDash |= Time.timeSinceLevelLoad > refreshDashTime && (ground.OnGround || dashResetsInAir);
         if (dashDesired && hasDash) {
             dashDesired = false;
             hasDash = false;
             inDash = true;
             jumpScript.isDashing = true;
-            refreshDashTime = Time.timeSinceLevelLoad + dashCooldown;
+            isSprinting = ground.OnGround;
+            dashDirection = facing;
             endDashTime = Time.timeSinceLevelLoad + dashDuration;
             float dashVelocity = Mathf.Max((dashDistance / dashDuration) * 2 - maxSpeed, maxSpeed);
+            sprintVelocity = maxSpeed + (dashVelocity - maxSpeed) * .55f;
             dashDeceleration = (dashVelocity - maxSpeed) / dashDuration * Time.deltaTime;
             body.velocity = new Vector2(facing * dashVelocity, body.velocity.y);
             return true;
         }
         else if (inDash) {
-            body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, maxSpeed * facing, dashDeceleration), body.velocity.y);
+            isSprinting = isSprinting && dashPressed && ground.OnGround && dashDirection == facing;
+            if (isSprinting) {
+                body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, sprintVelocity * dashDirection, dashDeceleration), body.velocity.y);
+                endDashTime = Mathf.Max(endDashTime, Time.timeSinceLevelLoad + dashDuration * .55f);
+            }
+            else {
+                body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, maxSpeed * facing, dashDeceleration), body.velocity.y);
+            }
             if (Time.timeSinceLevelLoad >= endDashTime) {
                 inDash = false;
                 jumpScript.isDashing = false;
+                hasDash |= !inDash && ground.OnGround;
             }
             return true;
         }
+        hasDash |= ground.OnGround;
         return false;
     }
 
     void HandleMovement() {
-        float desiredHorizontalSpeed = direction * Mathf.Max(maxSpeed - ground.Friction, 0f);
+        float desiredHorizontalSpeed = inputDirection * Mathf.Max(maxSpeed - ground.Friction, 0f);
         float horizontalAcceleration = ground.OnGround ? maxGroundAcceleration : maxAirAcceleration;
         float maxSpeedChange = horizontalAcceleration * Time.deltaTime;
         body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, desiredHorizontalSpeed, maxSpeedChange), body.velocity.y);

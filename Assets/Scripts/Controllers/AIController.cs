@@ -14,6 +14,10 @@ using UnityEngine;
             return 0f;
         }
 
+        public override bool RetrieveDashInput() {
+            return true;
+        }
+
         public override bool RetrieveDashInputDown() {
             return true;
         }

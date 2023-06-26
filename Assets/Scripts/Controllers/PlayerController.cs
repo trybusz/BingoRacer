@@ -14,6 +14,10 @@ using UnityEngine;
             return Input.GetAxisRaw("Horizontal");
         }
 
+        public override bool RetrieveDashInput() {
+            return Input.GetKey(KeyCode.S);
+        }
+
         public override bool RetrieveDashInputDown() {
             return Input.GetKeyDown(KeyCode.S);
         }
