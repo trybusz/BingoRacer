@@ -17,4 +17,8 @@ using UnityEngine;
         public override bool RetrieveDashInputDown() {
             return Input.GetKeyDown(KeyCode.S);
         }
+
+        public override bool RetrieveCheckpointInputDown() {
+            return Input.GetKeyDown(KeyCode.T);
+        }
     }

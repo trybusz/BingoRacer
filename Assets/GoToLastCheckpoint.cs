@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GoToLastCheckpoint : MonoBehaviour
 {
+    [SerializeField] private InputController input = null;
     GameObject lastCheckpoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +16,9 @@ public class GoToLastCheckpoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Do input here (Press T Key)
-        //When press T key
-        this.gameObject.transform.position = lastCheckpoint.transform.position;
+        if (input.RetrieveCheckpointInputDown()) {
+            this.gameObject.transform.position = lastCheckpoint.transform.position;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
