@@ -5,7 +5,8 @@ using UnityEngine;
 public class GoToLastCheckpoint : MonoBehaviour
 {
     [SerializeField] private InputController input = null;
-    GameObject lastCheckpoint;
+    public Vector3 checkpointPosition;
+    //GameObject lastCheckpoint;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +18,13 @@ public class GoToLastCheckpoint : MonoBehaviour
     void Update()
     {
         if (input.RetrieveCheckpointInputDown()) {
-            this.gameObject.transform.position = lastCheckpoint.transform.position;
+            this.gameObject.transform.position = checkpointPosition;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Checkpoint")) {
-            lastCheckpoint = collision.GetComponent<GameObject>();
+            checkpointPosition = collision.transform.position;
         }
     }
 }
