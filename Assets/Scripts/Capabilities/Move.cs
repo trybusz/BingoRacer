@@ -96,7 +96,6 @@ public class Move : MonoBehaviour
             isSprinting = isSprinting && dashPressed && ground.OnGround && dashDirection == facing;
             if (isSprinting) {
                 body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, sprintVelocity * dashDirection, dashDeceleration), body.velocity.y);
-                endDashTime = Mathf.Max(endDashTime, Time.timeSinceLevelLoad + dashDuration * .55f);
             }
             else {
                 body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, maxSpeed * facing, dashDeceleration), body.velocity.y);
@@ -106,6 +105,11 @@ public class Move : MonoBehaviour
                 jumpScript.isDashing = false;
                 hasDash |= !inDash && ground.OnGround;
             }
+            return true;
+        }
+        else if (isSprinting) {
+            isSprinting = isSprinting && dashPressed && ground.OnGround && dashDirection == facing;
+            body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, sprintVelocity * dashDirection, dashDeceleration), body.velocity.y);
             return true;
         }
         hasDash |= ground.OnGround;
