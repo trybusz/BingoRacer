@@ -35,21 +35,22 @@ public class CheckCheckpoints : MonoBehaviour
         if (checkpointCounter == checkpoints.Length) {
             float finalTime = GameObject.FindGameObjectWithTag("Player").GetComponent<TimeScript>().finalTime;
             int minutes = (int)finalTime / 60;
-            float seconds = finalTime % 60;
+            int seconds = (int)finalTime % 60;
+            int milliseconds = (int)Mathf.Round((finalTime % 1) * 1000);
 
 
             finalTimeText.enabled = true;
             if (seconds < 10 && minutes < 10) {
-                finalTimeText.SetText("Time: " + "0" + minutes + ":0" + seconds);
+                finalTimeText.SetText("Time: " + "0" + minutes + ":0" + seconds + "." + milliseconds);
             }
             else if (seconds < 10) {
-                finalTimeText.SetText("Time: " + minutes + ":0" + seconds);
+                finalTimeText.SetText("Time: " + minutes + ":0" + seconds + "." + milliseconds);
             }
             else if (minutes < 10) {
-                finalTimeText.SetText("Time: " + "0" + minutes + ":" + seconds);
+                finalTimeText.SetText("Time: " + "0" + minutes + ":" + seconds + "." + milliseconds);
             }
             else {
-                finalTimeText.SetText("Time: " + minutes + ":" + seconds);
+                finalTimeText.SetText("Time: " + minutes + ":" + seconds + "." + milliseconds);
             }
 
 

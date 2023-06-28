@@ -74,7 +74,7 @@ public class Move : MonoBehaviour
             hasDash = false;
             inDash = true;
             dashDirection = facing;
-            groundedSinceDash = ground.OnGround;
+            groundedSinceDash = false;
             endDashTime = Time.timeSinceLevelLoad + dashDuration;
             refreshDashTime = Time.timeSinceLevelLoad + dashCooldown;
             float dashVelocity = Mathf.Max((dashDistance / dashDuration) * 2 - maxSpeed, maxSpeed);
@@ -86,6 +86,7 @@ public class Move : MonoBehaviour
             body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, maxSpeed * facing, dashDeceleration), body.velocity.y);
             if (Time.timeSinceLevelLoad >= endDashTime) {
                 inDash = false;
+                groundedSinceDash = ground.OnGround;
             }
             return true;
         }
