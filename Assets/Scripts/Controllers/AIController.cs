@@ -25,4 +25,7 @@ using UnityEngine;
         public override bool RetrieveCheckpointInputDown() {
             return true;
         }
-    }
+        public override bool RetrieveSpawnInputDown() {
+            return true;
+        }
+}

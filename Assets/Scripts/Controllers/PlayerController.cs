@@ -25,4 +25,7 @@ using UnityEngine;
         public override bool RetrieveCheckpointInputDown() {
             return Input.GetKeyDown(KeyCode.T);
         }
-    }
+        public override bool RetrieveSpawnInputDown() {
+            return Input.GetKeyDown(KeyCode.Y);
+        }
+}
