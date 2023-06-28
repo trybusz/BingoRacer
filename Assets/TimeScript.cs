@@ -48,7 +48,7 @@ public class TimeScript : MonoBehaviour
                 timeText.SetText(minutes + ":" + seconds);
             }
         }
-        finalTime = minutes + seconds;
+        finalTime = minutes * 60 + seconds;
 
     }
 
