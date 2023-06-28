@@ -3,7 +3,7 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
     // objects
-
+    [SerializeField] Move moveScript;
     [SerializeField] private InputController input = null;
     Rigidbody2D body;
     Ground ground;
@@ -26,13 +26,13 @@ public class Jump : MonoBehaviour
     public bool jumpDesired = false;
     public int jumpsUsed = 0;
     public bool justJumped = false;
-    public bool isDashing = false;
     
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
+        moveScript = GetComponent<Move>();
     }
 
     void Update()
@@ -91,7 +91,7 @@ public class Jump : MonoBehaviour
 
     void HandleGravity() {
         Vector2 velocity = body.velocity;
-        if (isDashing) {
+        if (moveScript.inDash) {
             body.velocity = new Vector2(body.velocity.x, 0.0f);
             body.gravityScale = dashingGravity;
         }
