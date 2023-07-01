@@ -28,4 +28,7 @@ using UnityEngine;
         public override bool RetrieveSpawnInputDown() {
             return Input.GetKeyDown(KeyCode.Y);
         }
+    public override bool ReloadLevelInputDown() {
+        return Input.GetKeyDown(KeyCode.P);
+    }
 }

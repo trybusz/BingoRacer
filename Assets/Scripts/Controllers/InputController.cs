@@ -8,4 +8,5 @@ using UnityEngine;
         public abstract bool RetrieveDashInputDown();
         public abstract bool RetrieveCheckpointInputDown();
         public abstract bool RetrieveSpawnInputDown();
+    public abstract bool ReloadLevelInputDown();
 }

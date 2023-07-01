@@ -28,4 +28,7 @@ using UnityEngine;
         public override bool RetrieveSpawnInputDown() {
             return true;
         }
+    public override bool ReloadLevelInputDown() {
+        return true;
+    }
 }
