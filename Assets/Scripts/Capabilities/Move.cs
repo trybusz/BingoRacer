@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Move : MonoBehaviour
 {
 
     // objects
-    [SerializeField] private InputController input = null;
+    //[SerializeField] private InputController input = null;
     Rigidbody2D body;
     Ground ground;
     
@@ -31,6 +32,20 @@ public class Move : MonoBehaviour
     public bool inDash = false;
     public float refreshDashTime = -1;
 
+    //new input stuff
+    private PlayerActionControls playerActionControls;
+
+    private void Awake() {
+        playerActionControls = new PlayerActionControls();
+    }
+
+    private void OnEnable() {
+        playerActionControls.Enable();
+    }
+
+    private void OnDisable() {
+        playerActionControls.Disable();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -52,12 +67,14 @@ public class Move : MonoBehaviour
 
     void GetInput()
     {
-        inputDirection = input.RetrieveMoveInput();
+        //inputDirection = input.RetrieveMoveInput(); //Old version
+        inputDirection = playerActionControls.Game.Move.ReadValue<float>();
         if (inputDirection != 0 && !inDash) {
             facing = inputDirection;
         }
         if (dashEnabled) {
-            if (input.RetrieveDashInput()) {
+            //if (input.RetrieveDashInput()) { //Old Version
+            if (playerActionControls.Game.Dash.ReadValue<float>() == 1) {
                 dashDesired = true;
                 endDashBuffer = Time.timeSinceLevelLoad + dashBufferTime;
             }

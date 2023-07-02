@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Jump : MonoBehaviour
 {
     // objects
     [SerializeField] Move moveScript;
-    [SerializeField] private InputController input = null;
+    //[SerializeField] private InputController input = null;
     Rigidbody2D body;
     Ground ground;
     
@@ -26,7 +27,25 @@ public class Jump : MonoBehaviour
     public bool jumpDesired = false;
     public int jumpsUsed = 0;
     public bool justJumped = false;
-    
+
+
+    //new input stuff
+    private PlayerActionControls playerActionControls;
+
+    private void Awake() {
+        playerActionControls = new PlayerActionControls();
+    }
+
+    private void OnEnable() {
+        playerActionControls.Enable();
+    }
+
+    private void OnDisable() {
+        playerActionControls.Disable();
+    }
+    // Start is called before the first frame update
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +67,11 @@ public class Jump : MonoBehaviour
 
     void GetInput() 
     {
-        bool jumpDown = input.RetrieveJumpInputDown();
-        jumpPressed = input.RetrieveJumpInput();
+        //bool jumpDown = input.RetrieveJumpInputDown(); // Old 
+        //    public static bool GetButtonDown(this InputAction action) => action.triggered && action.ReadValue<float>() > 0;
+        //jumpPressed = input.RetrieveJumpInput(); // Old
+        bool jumpDown = playerActionControls.Game.Jump.ReadValue<float>() > 0 && playerActionControls.Game.Jump.triggered;
+        jumpPressed = playerActionControls.Game.Jump.ReadValue<float>() == 1;
         if (jumpDown) {
             jumpDesired = true;
             endJumpBuffer = Time.timeSinceLevelLoad + jumpBufferTime;
