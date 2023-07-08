@@ -48,11 +48,8 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-        if (!finished) {
-            GetInput();
-        }
-        
-
+        if (finished) return;
+        GetInput();
     }
 
     void FixedUpdate()

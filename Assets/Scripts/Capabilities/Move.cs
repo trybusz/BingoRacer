@@ -60,6 +60,7 @@ public class Move : MonoBehaviour
 
     void Update()
     {
+        if (finished) return;
         GetInput();
     }
 
@@ -72,22 +73,21 @@ public class Move : MonoBehaviour
 
     void GetInput()
     {
-        if(!finished) {
+        if (finished) return;
             //inputDirection = input.RetrieveMoveInput(); //Old version
             //inputDirection = playerActionControls.Game.Move.ReadValue<float>();
-            inputDirection = playerInput.actions["Move"].ReadValue<float>();
-            if (inputDirection != 0 && !inDash) {
-                facing = inputDirection;
-            }
-            if (dashEnabled) {
+        inputDirection = playerInput.actions["Move"].ReadValue<float>();
+        if (inputDirection != 0 && !inDash) {
+            facing = inputDirection;
+        }
+        if (dashEnabled) {
                 //if (input.RetrieveDashInput()) { //Old Version
-                if (playerInput.actions["Dash"].ReadValue<float>() == 1) {
-                    dashDesired = true;
-                    endDashBuffer = Time.timeSinceLevelLoad + dashBufferTime;
-                }
-                else if (Time.timeSinceLevelLoad >= endDashBuffer) {
-                    dashDesired = false;
-                }
+            if (playerInput.actions["Dash"].ReadValue<float>() == 1) {
+                dashDesired = true;
+                endDashBuffer = Time.timeSinceLevelLoad + dashBufferTime;
+            }
+            else if (Time.timeSinceLevelLoad >= endDashBuffer) {
+                dashDesired = false;
             }
         }
         

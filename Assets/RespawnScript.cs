@@ -23,8 +23,8 @@ public class RespawnScript : MonoBehaviour
     // Update is called once per frame
     void Update() {
         //if (input.RetrieveSpawnInputDown()) { // Old
-        if (playerInput.actions["Restart"].ReadValue<float>() == 1 && !finished) {
-                this.gameObject.transform.position = spawnPosition;
+        if (!finished && playerInput.actions["Restart"].ReadValue<float>() == 1) {
+            this.gameObject.transform.position = spawnPosition;
         }
     }
 }

@@ -42,7 +42,11 @@ public class CheckCheckpoints : MonoBehaviour
             int milliseconds = (int)Mathf.Round((finalTime % 1) * 1000);
 
             GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().finished = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().dashDesired = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().inputDirection = 0;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Jump>().finished = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Jump>().jumpDesired = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Jump>().jumpPressed = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<GoToLastCheckpoint>().finished = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<RespawnScript>().finished = true;
 

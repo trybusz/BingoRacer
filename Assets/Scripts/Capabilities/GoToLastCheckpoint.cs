@@ -28,24 +28,22 @@ public class GoToLastCheckpoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!finished) {
-            //if (input.RetrieveCheckpointInputDown() && collectedCheckpoint) { // Old
-            if (playerInput.actions["Checkpoint"].ReadValue<float>() == 1 && collectedCheckpoint) {
-                this.gameObject.transform.position = checkpointPosition;
-            }
-            //if (input.RetrieveSpawnInputDown()) { // Old
-            if (playerInput.actions["Restart"].ReadValue<float>() == 1) {
-                collectedCheckpoint = false;
+        if (finished) return;
+        //if (input.RetrieveCheckpointInputDown() && collectedCheckpoint) { // Old
+        if (playerInput.actions["Checkpoint"].ReadValue<float>() == 1 && collectedCheckpoint) {
+            this.gameObject.transform.position = checkpointPosition;
+        }
+        //if (input.RetrieveSpawnInputDown()) { // Old
+        if (playerInput.actions["Restart"].ReadValue<float>() == 1) {
+            collectedCheckpoint = false;
 
-                checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
-                for (int i = 0; i < checkpoints.Length; i++) {
-                    if (checkpoints[i].GetComponent<CheckpointScript>().isCollected()) {
-                        checkpoints[i].GetComponent<CheckpointScript>().setUncollected();
-                    }
+            checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+            for (int i = 0; i < checkpoints.Length; i++) {
+                if (checkpoints[i].GetComponent<CheckpointScript>().isCollected()) {
+                    checkpoints[i].GetComponent<CheckpointScript>().setUncollected();
                 }
             }
-        }
-        
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
