@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 
 public class GoToLastCheckpoint : MonoBehaviour
@@ -12,36 +13,25 @@ public class GoToLastCheckpoint : MonoBehaviour
     //GameObject lastCheckpoint;
 
     //new input stuff
-    private PlayerActionControls playerActionControls;
-
-    private void Awake() {
-        playerActionControls = new PlayerActionControls();
-    }
-
-    private void OnEnable() {
-        playerActionControls.Enable();
-    }
-
-    private void OnDisable() {
-        playerActionControls.Disable();
-    }
+    private PlayerInput playerInput;
 
 
     // Start is called before the first frame update
     void Start()
     {
         collectedCheckpoint = false;
+        playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //if (input.RetrieveCheckpointInputDown() && collectedCheckpoint) { // Old
-        if (playerActionControls.Game.Checkpoint.ReadValue<float>() == 1 && collectedCheckpoint) {
+        if (playerInput.actions["Checkpoint"].ReadValue<float>() == 1 && collectedCheckpoint) {
             this.gameObject.transform.position = checkpointPosition;
         } 
         //if (input.RetrieveSpawnInputDown()) { // Old
-        if (playerActionControls.Game.Restart.ReadValue<float>() == 1) {
+        if (playerInput.actions["Restart"].ReadValue<float>() == 1) {
                 collectedCheckpoint = false;
             
         checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");

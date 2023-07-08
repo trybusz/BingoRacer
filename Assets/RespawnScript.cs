@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RespawnScript : MonoBehaviour
 {
@@ -9,29 +10,18 @@ public class RespawnScript : MonoBehaviour
     //GameObject lastCheckpoint;
 
     //new input stuff
-    private PlayerActionControls playerActionControls;
-
-    private void Awake() {
-        playerActionControls = new PlayerActionControls();
-    }
-
-    private void OnEnable() {
-        playerActionControls.Enable();
-    }
-
-    private void OnDisable() {
-        playerActionControls.Disable();
-    }
+    private PlayerInput playerInput;
 
     // Start is called before the first frame update
     void Start() {
         spawnPosition = GameObject.FindGameObjectWithTag("Start").transform.position;
+        playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
     void Update() {
         //if (input.RetrieveSpawnInputDown()) { // Old
-        if (playerActionControls.Game.Restart.ReadValue<float>() == 1) {
+        if (playerInput.actions["Restart"].ReadValue<float>() == 1) {
                 this.gameObject.transform.position = spawnPosition;
         }
     }

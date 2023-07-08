@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 
 public class Jump : MonoBehaviour
@@ -30,19 +31,7 @@ public class Jump : MonoBehaviour
 
 
     //new input stuff
-    private PlayerActionControls playerActionControls;
-
-    private void Awake() {
-        playerActionControls = new PlayerActionControls();
-    }
-
-    private void OnEnable() {
-        playerActionControls.Enable();
-    }
-
-    private void OnDisable() {
-        playerActionControls.Disable();
-    }
+    private PlayerInput playerInput;
     // Start is called before the first frame update
 
 
@@ -52,11 +41,13 @@ public class Jump : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
         moveScript = GetComponent<Move>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
     {
         GetInput();
+
     }
 
     void FixedUpdate()
@@ -70,8 +61,8 @@ public class Jump : MonoBehaviour
         //bool jumpDown = input.RetrieveJumpInputDown(); // Old 
         //    public static bool GetButtonDown(this InputAction action) => action.triggered && action.ReadValue<float>() > 0;
         //jumpPressed = input.RetrieveJumpInput(); // Old
-        bool jumpDown = playerActionControls.Game.Jump.ReadValue<float>() > 0 && playerActionControls.Game.Jump.triggered;
-        jumpPressed = playerActionControls.Game.Jump.ReadValue<float>() == 1;
+        bool jumpDown = playerInput.actions["Jump"].ReadValue<float>() > 0 && playerInput.actions["Jump"].triggered;
+        jumpPressed = playerInput.actions["Jump"].ReadValue<float>() == 1;
         if (jumpDown) {
             jumpDesired = true;
             endJumpBuffer = Time.timeSinceLevelLoad + jumpBufferTime;

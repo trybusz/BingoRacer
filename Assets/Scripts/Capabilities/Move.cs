@@ -33,9 +33,10 @@ public class Move : MonoBehaviour
     public float refreshDashTime = -1;
 
     //new input stuff
-    private PlayerActionControls playerActionControls;
+    //private PlayerActionControls playerActionControls;
+    private PlayerInput playerInput;
 
-    private void Awake() {
+    /*private void Awake() {
         playerActionControls = new PlayerActionControls();
     }
 
@@ -45,13 +46,14 @@ public class Move : MonoBehaviour
 
     private void OnDisable() {
         playerActionControls.Disable();
-    }
+    }*/
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
-    }
+        playerInput = GetComponent<PlayerInput>();
+}
 
     void Update()
     {
@@ -68,13 +70,14 @@ public class Move : MonoBehaviour
     void GetInput()
     {
         //inputDirection = input.RetrieveMoveInput(); //Old version
-        inputDirection = playerActionControls.Game.Move.ReadValue<float>();
+        //inputDirection = playerActionControls.Game.Move.ReadValue<float>();
+        inputDirection = playerInput.actions["Move"].ReadValue<float>();
         if (inputDirection != 0 && !inDash) {
             facing = inputDirection;
         }
         if (dashEnabled) {
             //if (input.RetrieveDashInput()) { //Old Version
-            if (playerActionControls.Game.Dash.ReadValue<float>() == 1) {
+            if (playerInput.actions["Dash"].ReadValue<float>() == 1) {
                 dashDesired = true;
                 endDashBuffer = Time.timeSinceLevelLoad + dashBufferTime;
             }

@@ -9,10 +9,10 @@
                     "name": "Move",
                     "type": "PassThrough",
                     "id": "a9ec4842-f596-4610-b0d8-6f12a0e94e01",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
