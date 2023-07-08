@@ -9,6 +9,8 @@ public class RespawnScript : MonoBehaviour
     public Vector3 spawnPosition;
     //GameObject lastCheckpoint;
 
+    public bool finished;
+
     //new input stuff
     private PlayerInput playerInput;
 
@@ -21,7 +23,7 @@ public class RespawnScript : MonoBehaviour
     // Update is called once per frame
     void Update() {
         //if (input.RetrieveSpawnInputDown()) { // Old
-        if (playerInput.actions["Restart"].ReadValue<float>() == 1) {
+        if (playerInput.actions["Restart"].ReadValue<float>() == 1 && !finished) {
                 this.gameObject.transform.position = spawnPosition;
         }
     }

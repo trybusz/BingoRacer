@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PostLevelScript_OG_Lvl_1 : MonoBehaviour
+public class PostLevelScript_OG_Lvl_3 : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start() {
-
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
-    void Update() {
-
+    void Update()
+    {
+        
     }
 
     public void backToLevelSelect() {
@@ -24,7 +26,7 @@ public class PostLevelScript_OG_Lvl_1 : MonoBehaviour
     }
 
     public void nextLevel() {
-        SceneManager.LoadScene("OG_Lvl_2");
+        //SceneManager.LoadScene("OG_Lvl_4");
 
     }
 }

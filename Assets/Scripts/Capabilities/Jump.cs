@@ -29,6 +29,8 @@ public class Jump : MonoBehaviour
     public int jumpsUsed = 0;
     public bool justJumped = false;
 
+    public bool finished;
+
 
     //new input stuff
     private PlayerInput playerInput;
@@ -46,7 +48,10 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-        GetInput();
+        if (!finished) {
+            GetInput();
+        }
+        
 
     }
 

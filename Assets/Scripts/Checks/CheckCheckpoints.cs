@@ -9,13 +9,16 @@ public class CheckCheckpoints : MonoBehaviour
     public GameObject[] checkpoints;
     public int checkpointCounter;
     private TMP_Text finalTimeText = null;
+    public GameObject endPanel;
 
     // Start is called before the first frame update
     void Start()
     {
         checkpointCounter = 0;
         finalTimeText = GameObject.Find("FinalTimeUI").GetComponent<TMP_Text>();
-        finalTimeText.enabled = false;
+        
+        //endPanel = GameObject.Find("FinishedLevelCanvas").GetComponent<GameObject>();
+        endPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,8 +41,12 @@ public class CheckCheckpoints : MonoBehaviour
             int seconds = (int)finalTime % 60;
             int milliseconds = (int)Mathf.Round((finalTime % 1) * 1000);
 
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().finished = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Jump>().finished = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<GoToLastCheckpoint>().finished = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<RespawnScript>().finished = true;
 
-            finalTimeText.enabled = true;
+            endPanel.SetActive(true);
             if (seconds < 10 && minutes < 10) {
                 finalTimeText.SetText("Time: " + "0" + minutes + ":0" + seconds + "." + milliseconds);
             }

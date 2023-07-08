@@ -32,6 +32,8 @@ public class Move : MonoBehaviour
     public bool inDash = false;
     public float refreshDashTime = -1;
 
+    public bool finished;
+
     //new input stuff
     //private PlayerActionControls playerActionControls;
     private PlayerInput playerInput;
@@ -53,6 +55,7 @@ public class Move : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
         playerInput = GetComponent<PlayerInput>();
+        finished = false;
 }
 
     void Update()
@@ -69,22 +72,25 @@ public class Move : MonoBehaviour
 
     void GetInput()
     {
-        //inputDirection = input.RetrieveMoveInput(); //Old version
-        //inputDirection = playerActionControls.Game.Move.ReadValue<float>();
-        inputDirection = playerInput.actions["Move"].ReadValue<float>();
-        if (inputDirection != 0 && !inDash) {
-            facing = inputDirection;
-        }
-        if (dashEnabled) {
-            //if (input.RetrieveDashInput()) { //Old Version
-            if (playerInput.actions["Dash"].ReadValue<float>() == 1) {
-                dashDesired = true;
-                endDashBuffer = Time.timeSinceLevelLoad + dashBufferTime;
+        if(!finished) {
+            //inputDirection = input.RetrieveMoveInput(); //Old version
+            //inputDirection = playerActionControls.Game.Move.ReadValue<float>();
+            inputDirection = playerInput.actions["Move"].ReadValue<float>();
+            if (inputDirection != 0 && !inDash) {
+                facing = inputDirection;
             }
-            else if (Time.timeSinceLevelLoad >= endDashBuffer) {
-                dashDesired = false;
+            if (dashEnabled) {
+                //if (input.RetrieveDashInput()) { //Old Version
+                if (playerInput.actions["Dash"].ReadValue<float>() == 1) {
+                    dashDesired = true;
+                    endDashBuffer = Time.timeSinceLevelLoad + dashBufferTime;
+                }
+                else if (Time.timeSinceLevelLoad >= endDashBuffer) {
+                    dashDesired = false;
+                }
             }
         }
+        
     }
 
     // This function needs to be broken down into smaller pieces. It is confusing
