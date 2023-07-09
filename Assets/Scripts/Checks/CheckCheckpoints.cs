@@ -64,6 +64,8 @@ public class CheckCheckpoints : MonoBehaviour
                 finalTimeText.SetText("Time: " + minutes + ":" + seconds + "." + milliseconds);
             }
 
+            gameObject.GetComponent<DisplayMedalsScript>().displayMedals(finalTime);
+
 
 
             //End Game

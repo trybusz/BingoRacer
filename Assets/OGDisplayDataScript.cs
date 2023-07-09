@@ -69,10 +69,10 @@ public class OGDisplayDataScript : MonoBehaviour
         else {
             bestTimeText.SetText("Best Time: " + minutes + ":" + seconds);
         }
-        makerMedalTime = 27.497f;
-        goldMedalTime = 30;   //Maker Medal Time Times 1.065 rounded up to second
-        silverMedalTime = 33; //Maker Medal Time Times 1.2 rounded up to second
-        bronzeMedalTime = 42; //Maker Medal Time Times 1.5 rounded up to second
+        makerMedalTime = 27.316f; //Make Sure to Set both here and in level
+        goldMedalTime = 31;   //Maker Medal Time Times 1.1 rounded up to second
+        silverMedalTime = 35; //Maker Medal Time Times 1.25 rounded up to second
+        bronzeMedalTime = 41; //Maker Medal Time Times 1.5 rounded up to second
         if (playerBestTime < bronzeMedalTime) {
             bronzeMedal.enabled = true;
         }
@@ -113,8 +113,8 @@ public class OGDisplayDataScript : MonoBehaviour
             bestTimeText.SetText("Best Time: " + minutes + ":" + seconds);
         }
         makerMedalTime = 26.756f;
-        goldMedalTime = 29;   //Maker Medal Time Times 1.065 rounded up to second
-        silverMedalTime = 33; //Maker Medal Time Times 1.2 rounded up to second
+        goldMedalTime = 30;   //Maker Medal Time Times 1.1 rounded up to second
+        silverMedalTime = 34; //Maker Medal Time Times 1.25 rounded up to second
         bronzeMedalTime = 41; //Maker Medal Time Times 1.5 rounded up to second
         if (playerBestTime < bronzeMedalTime) {
             bronzeMedal.enabled = true;
@@ -156,8 +156,8 @@ public class OGDisplayDataScript : MonoBehaviour
             bestTimeText.SetText("Best Time: " + minutes + ":" + seconds);
         }
         makerMedalTime = 29.215f; //////////
-        goldMedalTime = 32;   //Maker Medal Time Times 1.065 rounded up to second //////////
-        silverMedalTime = 36; //Maker Medal Time Times 1.2 rounded up to second //////////
+        goldMedalTime = 33;   //Maker Medal Time Times 1.1 rounded up to second //////////
+        silverMedalTime = 37; //Maker Medal Time Times 1.25 rounded up to second //////////
         bronzeMedalTime = 44; //Maker Medal Time Times 1.5 rounded up to second //////////
         if (playerBestTime < bronzeMedalTime) {
             bronzeMedal.enabled = true;
