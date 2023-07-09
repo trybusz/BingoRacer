@@ -69,10 +69,10 @@ public class OGDisplayDataScript : MonoBehaviour
         else {
             bestTimeText.SetText("Best Time: " + minutes + ":" + seconds);
         }
-        makerMedalTime = 27.316f; //Make Sure to Set both here and in level
-        goldMedalTime = 31;   //Maker Medal Time Times 1.1 rounded up to second
-        silverMedalTime = 35; //Maker Medal Time Times 1.25 rounded up to second
-        bronzeMedalTime = 41; //Maker Medal Time Times 1.5 rounded up to second
+        makerMedalTime = 127.316f; //Make Sure to Set both here and in level
+        goldMedalTime = 131;   //Maker Medal Time Times 1.1 rounded up to second
+        silverMedalTime = 135; //Maker Medal Time Times 1.25 rounded up to second
+        bronzeMedalTime = 141; //Maker Medal Time Times 1.5 rounded up to second
         if (playerBestTime < bronzeMedalTime) {
             bronzeMedal.enabled = true;
         }
@@ -85,10 +85,10 @@ public class OGDisplayDataScript : MonoBehaviour
         if (playerBestTime < makerMedalTime) {
             makerMedal.enabled = true;
         }
-        makerTime.SetText("Maker Time: 00:27.497");
-        goldTime.SetText("Gold Time: 00:30.000");
-        silverTime.SetText("Silver Time: 00:33.000");
-        bronzeTime.SetText("Bronze Time: 00:42.000");
+        makerTime.SetText("Maker Time: 00:127.497");
+        goldTime.SetText("Gold Time: 00:131.000");
+        silverTime.SetText("Silver Time: 00:135.000");
+        bronzeTime.SetText("Bronze Time: 00:141.000");
     }
     public void showLevel2() {
         bronzeMedal.enabled = false;
@@ -96,6 +96,49 @@ public class OGDisplayDataScript : MonoBehaviour
         goldMedal.enabled = false;
         makerMedal.enabled = false;
         levelText.SetText("Level 2");
+        playerBestTime = 0;//Phillip get this
+        minutes = (int)playerBestTime / 60;
+        seconds = playerBestTime % 60;
+        seconds = Mathf.Round(seconds * 1000f) / 1000f;
+        if (seconds < 10 && minutes < 10) {
+            bestTimeText.SetText("Best Time: " + "0" + minutes + ":0" + seconds);
+        }
+        else if (seconds < 10) {
+            bestTimeText.SetText("Best Time: " + minutes + ":0" + seconds);
+        }
+        else if (minutes < 10) {
+            bestTimeText.SetText("Best Time: " + "0" + minutes + ":" + seconds);
+        }
+        else {
+            bestTimeText.SetText("Best Time: " + minutes + ":" + seconds);
+        }
+        makerMedalTime = 30.179f; //Make Sure to Set both here and in level
+        goldMedalTime = 34;   //Maker Medal Time Times 1.1 rounded up to second
+        silverMedalTime = 38; //Maker Medal Time Times 1.25 rounded up to second
+        bronzeMedalTime = 46; //Maker Medal Time Times 1.5 rounded up to second
+        if (playerBestTime < bronzeMedalTime) {
+            bronzeMedal.enabled = true;
+        }
+        if (playerBestTime < silverMedalTime) {
+            silverMedal.enabled = true;
+        }
+        if (playerBestTime < goldMedalTime) {
+            goldMedal.enabled = true;
+        }
+        if (playerBestTime < makerMedalTime) {
+            makerMedal.enabled = true;
+        }
+        makerTime.SetText("Maker Time: 00:30.179");
+        goldTime.SetText("Gold Time: 00:34.000");
+        silverTime.SetText("Silver Time: 00:38.000");
+        bronzeTime.SetText("Bronze Time: 00:46.000");
+    }
+    public void showLevel12() {
+        bronzeMedal.enabled = false;
+        silverMedal.enabled = false;
+        goldMedal.enabled = false;
+        makerMedal.enabled = false;
+        levelText.SetText("Level 12");
         playerBestTime = 0;//Phillip get this
         minutes = (int)playerBestTime / 60;
         seconds = playerBestTime % 60;
@@ -129,11 +172,11 @@ public class OGDisplayDataScript : MonoBehaviour
             makerMedal.enabled = true;
         }
         makerTime.SetText("Maker Time: 00:26.756");
-        goldTime.SetText("Gold Time: 00:29.000");
-        silverTime.SetText("Silver Time: 00:33.000");
+        goldTime.SetText("Gold Time: 00:30.000");
+        silverTime.SetText("Silver Time: 00:34.000");
         bronzeTime.SetText("Bronze Time: 00:41.000");
     }
-    public void showLevel3() { //////////
+    public void showLevel18() { //////////
         bronzeMedal.enabled = false;
         silverMedal.enabled = false;
         goldMedal.enabled = false;
@@ -172,8 +215,51 @@ public class OGDisplayDataScript : MonoBehaviour
             makerMedal.enabled = true;
         }
         makerTime.SetText("Maker Time: 00:29.215"); //////////
-        goldTime.SetText("Gold Time: 00:32.000"); //////////
-        silverTime.SetText("Silver Time: 00:36.000"); //////////
+        goldTime.SetText("Gold Time: 00:33.000"); //////////
+        silverTime.SetText("Silver Time: 00:37.000"); //////////
         bronzeTime.SetText("Bronze Time: 00:44.000"); //////////
+    }
+    public void showLevel6() {
+        bronzeMedal.enabled = false;
+        silverMedal.enabled = false;
+        goldMedal.enabled = false;
+        makerMedal.enabled = false;
+        levelText.SetText("Level 6");
+        playerBestTime = 0;//Phillip get this
+        minutes = (int)playerBestTime / 60;
+        seconds = playerBestTime % 60;
+        seconds = Mathf.Round(seconds * 1000f) / 1000f;
+        if (seconds < 10 && minutes < 10) {
+            bestTimeText.SetText("Best Time: " + "0" + minutes + ":0" + seconds);
+        }
+        else if (seconds < 10) {
+            bestTimeText.SetText("Best Time: " + minutes + ":0" + seconds);
+        }
+        else if (minutes < 10) {
+            bestTimeText.SetText("Best Time: " + "0" + minutes + ":" + seconds);
+        }
+        else {
+            bestTimeText.SetText("Best Time: " + minutes + ":" + seconds);
+        }
+        makerMedalTime = 27.316f; //Make Sure to Set both here and in level
+        goldMedalTime = 31;   //Maker Medal Time Times 1.1 rounded up to second
+        silverMedalTime = 35; //Maker Medal Time Times 1.25 rounded up to second
+        bronzeMedalTime = 41; //Maker Medal Time Times 1.5 rounded up to second
+        if (playerBestTime < bronzeMedalTime) {
+            bronzeMedal.enabled = true;
+        }
+        if (playerBestTime < silverMedalTime) {
+            silverMedal.enabled = true;
+        }
+        if (playerBestTime < goldMedalTime) {
+            goldMedal.enabled = true;
+        }
+        if (playerBestTime < makerMedalTime) {
+            makerMedal.enabled = true;
+        }
+        makerTime.SetText("Maker Time: 00:27.497");
+        goldTime.SetText("Gold Time: 00:31.000");
+        silverTime.SetText("Silver Time: 00:35.000");
+        bronzeTime.SetText("Bronze Time: 00:41.000");
     }
 }
