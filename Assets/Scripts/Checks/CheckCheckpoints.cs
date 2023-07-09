@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
 
@@ -26,7 +27,6 @@ public class CheckCheckpoints : MonoBehaviour
     {
         
     }
-    
 
     private void OnTriggerEnter2D(Collider2D other) {
         checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
@@ -36,6 +36,10 @@ public class CheckCheckpoints : MonoBehaviour
             }
         }
         if (checkpointCounter == checkpoints.Length) {
+            string levelName = SceneManager.GetActiveScene().name;
+            LevelTimesData levelTimes = new LevelTimesData();
+            float bestTime = levelTimes.GetLevelTime("OGLevels", levelName);
+
             float finalTime = GameObject.FindGameObjectWithTag("Player").GetComponent<TimeScript>().finalTime;
             int minutes = (int)finalTime / 60;
             int seconds = (int)finalTime % 60;
@@ -66,7 +70,9 @@ public class CheckCheckpoints : MonoBehaviour
 
             gameObject.GetComponent<DisplayMedalsScript>().displayMedals(finalTime);
 
-
+            if (finalTime < bestTime) {
+                levelTimes.UpdateLevelTime("OGLevels", levelName, finalTime);
+            }
 
             //End Game
         }

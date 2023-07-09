@@ -26,6 +26,9 @@ public class OGDisplayDataScript : MonoBehaviour
     private float goldMedalTime;
     private float silverMedalTime;
     private float bronzeMedalTime;
+
+    LevelTimesData levelTimes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,7 @@ public class OGDisplayDataScript : MonoBehaviour
         goldTime = GameObject.Find("Gold Time").GetComponent<TMP_Text>();
         silverTime = GameObject.Find("Silver Time").GetComponent<TMP_Text>();
         bronzeTime = GameObject.Find("Bronze Time").GetComponent<TMP_Text>();
+        levelTimes = new LevelTimesData();
         showLevel1();
     }
 
@@ -53,7 +57,7 @@ public class OGDisplayDataScript : MonoBehaviour
         goldMedal.enabled = false;
         makerMedal.enabled = false;
         levelText.SetText("Level 1");
-        playerBestTime = 0;//Phillip get this
+        playerBestTime = levelTimes.GetLevelTime("OGLevels", "OG_Lvl_1");
         minutes = (int)playerBestTime / 60;
         seconds = playerBestTime % 60;
         seconds = Mathf.Round(seconds * 1000f) / 1000f;
@@ -96,7 +100,7 @@ public class OGDisplayDataScript : MonoBehaviour
         goldMedal.enabled = false;
         makerMedal.enabled = false;
         levelText.SetText("Level 2");
-        playerBestTime = 0;//Phillip get this
+        playerBestTime = levelTimes.GetLevelTime("OGLevels", "OG_Lvl_2");
         minutes = (int)playerBestTime / 60;
         seconds = playerBestTime % 60;
         seconds = Mathf.Round(seconds * 1000f) / 1000f;
@@ -139,7 +143,7 @@ public class OGDisplayDataScript : MonoBehaviour
         goldMedal.enabled = false;
         makerMedal.enabled = false;
         levelText.SetText("Level 12");
-        playerBestTime = 0;//Phillip get this
+        playerBestTime = levelTimes.GetLevelTime("OGLevels", "OG_Lvl_12");
         minutes = (int)playerBestTime / 60;
         seconds = playerBestTime % 60;
         seconds = Mathf.Round(seconds * 1000f) / 1000f;
@@ -181,8 +185,8 @@ public class OGDisplayDataScript : MonoBehaviour
         silverMedal.enabled = false;
         goldMedal.enabled = false;
         makerMedal.enabled = false;
-        levelText.SetText("Level 3"); //////////
-        playerBestTime = 0;//Phillip get this
+        levelText.SetText("Level 18"); //////////
+        playerBestTime = levelTimes.GetLevelTime("OGLevels", "OG_Lvl_18");
         minutes = (int)playerBestTime / 60;
         seconds = playerBestTime % 60;
         seconds = Mathf.Round(seconds * 1000f) / 1000f;
@@ -225,7 +229,7 @@ public class OGDisplayDataScript : MonoBehaviour
         goldMedal.enabled = false;
         makerMedal.enabled = false;
         levelText.SetText("Level 6");
-        playerBestTime = 0;//Phillip get this
+        playerBestTime = levelTimes.GetLevelTime("OGLevels", "OG_Lvl_6");
         minutes = (int)playerBestTime / 60;
         seconds = playerBestTime % 60;
         seconds = Mathf.Round(seconds * 1000f) / 1000f;
