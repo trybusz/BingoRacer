@@ -62,10 +62,10 @@ public class DisplayMedalsScript : MonoBehaviour
             bronzeMedalTime = 41f; //Maker Medal Time Times 1.5 rounded up to second
         }
         else if (levelName == "OG_Lvl_2") {
-            makerMedalTime = 30.179f; //Make Sure to Set both here and in menus
-            goldMedalTime = 34;   //Maker Medal Time Times 1.1 rounded up to second
+            makerMedalTime = 29.956f; //Make Sure to Set both here and in menus
+            goldMedalTime = 33;   //Maker Medal Time Times 1.1 rounded up to second
             silverMedalTime = 38; //Maker Medal Time Times 1.25 rounded up to second
-            bronzeMedalTime = 46; //Maker Medal Time Times 1.5 rounded up to second
+            bronzeMedalTime = 45; //Maker Medal Time Times 1.5 rounded up to second
         }
         else if (levelName == "OG_Lvl_6") {
             makerMedalTime = 27.316f; //Make Sure to Set both here and in menus

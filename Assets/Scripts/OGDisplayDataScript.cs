@@ -116,10 +116,10 @@ public class OGDisplayDataScript : MonoBehaviour
         else {
             bestTimeText.SetText("Best Time: " + minutes + ":" + seconds);
         }
-        makerMedalTime = 30.179f; //Make Sure to Set both here and in level
-        goldMedalTime = 34f;   //Maker Medal Time Times 1.1 rounded up to second
+        makerMedalTime = 29.956f; //Make Sure to Set both here and in level
+        goldMedalTime = 33f;   //Maker Medal Time Times 1.1 rounded up to second
         silverMedalTime = 38f; //Maker Medal Time Times 1.25 rounded up to second
-        bronzeMedalTime = 46f; //Maker Medal Time Times 1.5 rounded up to second
+        bronzeMedalTime = 45f; //Maker Medal Time Times 1.5 rounded up to second
         if (playerBestTime < bronzeMedalTime) {
             bronzeMedal.enabled = true;
         }
@@ -132,10 +132,10 @@ public class OGDisplayDataScript : MonoBehaviour
         if (playerBestTime < makerMedalTime) {
             makerMedal.enabled = true;
         }
-        makerTime.SetText("Maker Time: 00:30.179");
-        goldTime.SetText("Gold Time: 00:34.000");
+        makerTime.SetText("Maker Time: 00:29.956");
+        goldTime.SetText("Gold Time: 00:33.000");
         silverTime.SetText("Silver Time: 00:38.000");
-        bronzeTime.SetText("Bronze Time: 00:46.000");
+        bronzeTime.SetText("Bronze Time: 00:45.000");
     }
     public void showLevel12() {
         bronzeMedal.enabled = false;
