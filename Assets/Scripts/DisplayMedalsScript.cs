@@ -29,7 +29,6 @@ public class DisplayMedalsScript : MonoBehaviour
 
     public void displayMedals(float playerTime) {
         levelName = SceneManager.GetActiveScene().name;
-        Debug.Log(levelName);
         bronzeMedal = GameObject.Find("BronzeMedal").GetComponent<Image>();
         silverMedal = GameObject.Find("SilverMedal").GetComponent<Image>();
         goldMedal = GameObject.Find("GoldMedal").GetComponent<Image>();

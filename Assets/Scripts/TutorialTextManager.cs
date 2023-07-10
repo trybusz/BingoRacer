@@ -25,7 +25,6 @@ public class TutorialTextManager : MonoBehaviour
     {
         string rebinds = PlayerPrefs.GetString("rebinds");
         Dictionary<string, string> controls = GetInputControls(rebinds);
-        Debug.Log(rebinds);
 
         moveText = GameObject.Find("MoveText").GetComponent<TMP_Text>();
         jumpText = GameObject.Find("JumpText").GetComponent<TMP_Text>();
