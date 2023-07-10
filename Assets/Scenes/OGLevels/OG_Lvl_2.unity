@@ -2581,7 +2581,6 @@ GameObject:
   m_Component:
   - component: {fileID: 633238260}
   - component: {fileID: 633238261}
-  - component: {fileID: 633238262}
   m_Layer: 0
   m_Name: PostLevelSelections
   m_TagString: Untagged
@@ -2617,18 +2616,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f47a38b4d164f04bbd1cee724347080, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &633238262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633238259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed66ad8aaedcba34eb66cef8b5f50ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &636631700
