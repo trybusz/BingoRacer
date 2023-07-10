@@ -55,7 +55,13 @@ public class DisplayMedalsScript : MonoBehaviour
 
     public void findTimes() {
         
-        if (levelName == "OG_Lvl_2") {
+        if (levelName == "OG_Lvl_1") {
+            makerMedalTime = 26.999f; //Make Sure to Set both here and in menus
+            goldMedalTime = 30f;   //Maker Medal Time Times 1.1 rounded up to second
+            silverMedalTime = 34f; //Maker Medal Time Times 1.25 rounded up to second
+            bronzeMedalTime = 41f; //Maker Medal Time Times 1.5 rounded up to second
+        }
+        else if (levelName == "OG_Lvl_2") {
             makerMedalTime = 30.179f; //Make Sure to Set both here and in menus
             goldMedalTime = 34;   //Maker Medal Time Times 1.1 rounded up to second
             silverMedalTime = 38; //Maker Medal Time Times 1.25 rounded up to second
