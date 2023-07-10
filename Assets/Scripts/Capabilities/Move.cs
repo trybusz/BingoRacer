@@ -77,6 +77,12 @@ public class Move : MonoBehaviour
             //inputDirection = input.RetrieveMoveInput(); //Old version
             //inputDirection = playerActionControls.Game.Move.ReadValue<float>();
         inputDirection = playerInput.actions["Move"].ReadValue<float>();
+        if (inputDirection > 0.05f) {
+            inputDirection = 1f;
+        }
+        else if (inputDirection < -0.05f) {
+            inputDirection = -1f;
+        }
         if (inputDirection != 0 && !inDash) {
             facing = inputDirection;
         }
