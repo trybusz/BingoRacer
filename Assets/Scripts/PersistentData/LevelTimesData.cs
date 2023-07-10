@@ -60,7 +60,6 @@ public class LevelTimesData {
     }
 
     private void GetLevelTimeData() {
-        Debug.Log("trying to load data");
         if (PersistentDataSaveLoad.FileExists("LevelTimesData")) {
             string levelTimeDataJson = "";
             PersistentDataSaveLoad.LoadFromFile("LevelTimesData", out levelTimeDataJson); 
