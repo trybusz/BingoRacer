@@ -55,6 +55,28 @@ public static class LevelAssets : object
         return null;
     }
 
+    public static string ConvertTimeToString(float time) {
+        int min = (int)time / 60;
+        int sec = (int)time % 60;
+        int mil = (int)Mathf.Round((time % 1) * 1000);
+        string minStr = min.ToString();
+        string secStr = sec.ToString();
+        string milStr = mil.ToString();
+        if (min < 10) {
+            minStr = "0" + minStr;
+        }
+        if (sec < 10) {
+            secStr = "0" + secStr;
+        }
+        if (mil < 10) {
+            milStr = "00" + milStr;
+        }
+        else if (mil < 100) {
+            milStr = "0" + milStr;
+        }
+        return minStr + ":" + secStr + "." + milStr;
+    }
+
     // private static GameAssets _i;
     // public static GameAssets i
     // {

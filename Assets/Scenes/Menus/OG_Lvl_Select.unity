@@ -1083,7 +1083,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2048114172}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: OGDisplayDataScript, Assembly-CSharp
           m_MethodName: showLevel3
           m_Mode: 1
@@ -6151,14 +6151,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 416272512}
         m_TargetAssemblyTypeName: OGSelectButtonsScript, Assembly-CSharp
-        m_MethodName: toLevel12
-        m_Mode: 1
+        m_MethodName: toLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: OG_Lvl_12
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1480003792
@@ -6218,14 +6218,14 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2048114172}
           m_TargetAssemblyTypeName: OGDisplayDataScript, Assembly-CSharp
-          m_MethodName: showLevel12
-          m_Mode: 1
+          m_MethodName: ShowLevelData
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: OG_Lvl_12
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1499664003
@@ -6657,14 +6657,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 416272512}
         m_TargetAssemblyTypeName: OGSelectButtonsScript, Assembly-CSharp
-        m_MethodName: toLevel2
-        m_Mode: 1
+        m_MethodName: toLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: OG_Lvl_2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1651294387
@@ -6724,14 +6724,14 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2048114172}
           m_TargetAssemblyTypeName: OGDisplayDataScript, Assembly-CSharp
-          m_MethodName: showLevel2
-          m_Mode: 1
+          m_MethodName: ShowLevelData
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: OG_Lvl_2
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1727118673
@@ -6821,14 +6821,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 416272512}
         m_TargetAssemblyTypeName: OGSelectButtonsScript, Assembly-CSharp
-        m_MethodName: toLevel1
-        m_Mode: 1
+        m_MethodName: toLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: OG_Lvl_1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1727118676
@@ -6888,14 +6888,14 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2048114172}
           m_TargetAssemblyTypeName: OGDisplayDataScript, Assembly-CSharp
-          m_MethodName: showLevel1
-          m_Mode: 1
+          m_MethodName: ShowLevelData
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: OG_Lvl_1
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1769234738
@@ -7120,14 +7120,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 416272512}
         m_TargetAssemblyTypeName: OGSelectButtonsScript, Assembly-CSharp
-        m_MethodName: toLevel18
-        m_Mode: 1
+        m_MethodName: toLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: OG_Lvl_18
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1834164596
@@ -7187,14 +7187,14 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2048114172}
           m_TargetAssemblyTypeName: OGDisplayDataScript, Assembly-CSharp
-          m_MethodName: showLevel18
-          m_Mode: 1
+          m_MethodName: ShowLevelData
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: OG_Lvl_18
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1858395901
@@ -8619,14 +8619,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 416272512}
         m_TargetAssemblyTypeName: OGSelectButtonsScript, Assembly-CSharp
-        m_MethodName: toLevel6
-        m_Mode: 1
+        m_MethodName: toLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: OG_Lvl_6
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2122606515
@@ -8686,14 +8686,14 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2048114172}
           m_TargetAssemblyTypeName: OGDisplayDataScript, Assembly-CSharp
-          m_MethodName: showLevel6
-          m_Mode: 1
+          m_MethodName: ShowLevelData
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: OG_Lvl_6
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &2123775567

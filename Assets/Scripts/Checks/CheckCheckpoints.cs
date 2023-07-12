@@ -41,9 +41,7 @@ public class CheckCheckpoints : MonoBehaviour
             float bestTime = levelTimes.GetLevelTime("OGLevels", levelName);
 
             float finalTime = GameObject.FindGameObjectWithTag("Player").GetComponent<TimeScript>().finalTime;
-            int minutes = (int)finalTime / 60;
-            int seconds = (int)finalTime % 60;
-            int milliseconds = (int)Mathf.Round((finalTime % 1) * 1000);
+            string finalTimeString = LevelAssets.ConvertTimeToString(finalTime);
 
             GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().finished = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().dashDesired = false;
@@ -55,19 +53,7 @@ public class CheckCheckpoints : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<RespawnScript>().finished = true;
 
             endPanel.SetActive(true);
-            if (seconds < 10 && minutes < 10) {
-                finalTimeText.SetText("Time: " + "0" + minutes + ":0" + seconds + "." + milliseconds);
-            }
-            else if (seconds < 10) {
-                finalTimeText.SetText("Time: " + minutes + ":0" + seconds + "." + milliseconds);
-            }
-            else if (minutes < 10) {
-                finalTimeText.SetText("Time: " + "0" + minutes + ":" + seconds + "." + milliseconds);
-            }
-            else {
-                finalTimeText.SetText("Time: " + minutes + ":" + seconds + "." + milliseconds);
-            }
-
+            finalTimeText.SetText("Time: " + finalTimeString);
             gameObject.GetComponent<DisplayMedalsScript>().displayMedals(finalTime);
 
             if (finalTime < bestTime) {
