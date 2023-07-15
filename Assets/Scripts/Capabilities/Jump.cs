@@ -17,6 +17,7 @@ public class Jump : MonoBehaviour
     public float stopRisingGravity = 20f;
     public float fallingGravity = 10f;
     public float restingGravity = 1f;
+    public float maxFallSpeed = -35f;
     public float dashingGravity = 0f;
     public float jumpBufferTime = .2f;
     public float coyoteTime = .08f;
@@ -74,7 +75,7 @@ public class Jump : MonoBehaviour
         }
     }
 
-    void HandleJump() 
+    void HandleJump()
     {
         // had to check if player just jumped because in the next frame,
         // the player would usually still be on the ground and would get
@@ -123,6 +124,9 @@ public class Jump : MonoBehaviour
         }
         else {
             body.gravityScale = fallingGravity;
+        }
+        if (body.velocity.y < maxFallSpeed) {
+            body.velocity = new Vector2(body.velocity.x, maxFallSpeed);
         }
     }
 

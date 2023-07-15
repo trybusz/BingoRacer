@@ -16,7 +16,7 @@ public class Move : MonoBehaviour
     float dashDuration = .15f;
     float dashDistance = 3f;
     bool dashEnabled = true;
-    float dashBufferTime = .1f;
+    float dashBufferTime = .08f;
     float dashCooldown = .44f;
 
     // state
