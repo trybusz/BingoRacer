@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/OGLevels/OG_Tutorial.unity
     guid: 9a36c52428a61204b9a795a49bef3fd1
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_102.unity
+    path: Assets/Scenes/OGLevels/OG_Lvl_10.unity
     guid: 9f195b658f340fa47b84c97ae077dd3a
   - enabled: 1
     path: Assets/Scenes/OGLevels/OG_Lvl_12.unity
@@ -38,5 +38,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OGLevels/OG_Lvl_6.unity
     guid: 512fc301816b51a44b9fb6bbb23ed14c
+  - enabled: 1
+    path: Assets/Scenes/OGLevels/OG_Lvl_15.unity
+    guid: caa71334dfc62c74c91cd0045f6f2419
+  - enabled: 1
+    path: Assets/Scenes/OGLevels/OG_Lvl_19.unity
+    guid: 22f37a49cf7451b499aaa9b27af460ff
+  - enabled: 1
+    path: Assets/Scenes/OGLevels/OG_Lvl_22.unity
+    guid: bd6abe83b257e2049acfcee81db9d437
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f29befd73cc6d6c4e8003264472aebff, type: 2}
