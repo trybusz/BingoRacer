@@ -4,28 +4,63 @@ using UnityEngine;
 
 public static class LevelAssets : object
 {
-    public struct LevelLocation {
-        public string name;
+
+    public struct LevelInfo {
+        public string displayName;
         public string sceneName;
-        public string []levelNames;
-        public LevelLocation(string name, string sceneName, string[] levelNames) {
-            this.name = name;
+        public float makerTime;
+        public LevelInfo(string displayName, string sceneName, float makerTime) {
+            this.displayName = displayName;
             this.sceneName = sceneName;
-            this.levelNames = levelNames;
+            this.makerTime = makerTime;
+        }
+    }
+
+    public struct LevelLocation {
+        public string displayName;
+        public string sceneName;
+        public LevelInfo[] levels;
+        public LevelLocation(string displayName, string sceneName, LevelInfo[] levels) {
+            this.displayName = displayName;
+            this.sceneName = sceneName;
+            this.levels = levels;
         }
     }
 
     private static bool isInit = false;
-    // level names must be unique (temp bad solution) or the game needs to keep track of the current level folder
     public static readonly LevelLocation[] levelDirectories = {
-        new LevelLocation("OGLevels",
-                          "OG_Lvl_Select",
-                          new string[25]{"OG_Lvl_1", "OG_Lvl_2", "OG_Lvl_3", "OG_Lvl_4", "OG_Lvl_5",
-                                         "OG_Lvl_6", "OG_Lvl_7", "OG_Lvl_8", "OG_Lvl_9", "OG_Lvl_10",
-                                         "OG_Lvl_11", "OG_Lvl_12", "OG_Lvl_13", "OG_Lvl_14", "OG_Lvl_15",
-                                         "OG_Lvl_16", "OG_Lvl_17", "OG_Lvl_18", "OG_Lvl_19", "OG_Lvl_20",
-                                         "OG_Lvl_21", "OG_Lvl_22", "OG_Lvl_23", "OG_Lvl_24", "OG_Lvl_25"})
-        };
+        new LevelLocation(
+            "OGLevels",
+            "OG_Lvl_Select",
+            new LevelInfo[25]{
+                new LevelInfo("Level 1", "OG_Lvl_1", 671.111f),
+                new LevelInfo("Level 2", "OG_Lvl_2", 671.111f),
+                new LevelInfo("Level 3", "OG_Lvl_3", 671.111f),
+                new LevelInfo("Level 4", "OG_Lvl_4", 671.111f),
+                new LevelInfo("Level 5", "OG_Lvl_5", 671.111f),
+                new LevelInfo("Level 6", "OG_Lvl_6", 671.111f),
+                new LevelInfo("Level 7", "OG_Lvl_7", 671.111f),
+                new LevelInfo("Level 8", "OG_Lvl_8", 671.111f),
+                new LevelInfo("Level 9", "OG_Lvl_9", 671.111f),
+                new LevelInfo("Level 10", "OG_Lvl_10", 671.111f),
+                new LevelInfo("Level 11", "OG_Lvl_11", 671.111f),
+                new LevelInfo("Level 12", "OG_Lvl_12", 671.111f),
+                new LevelInfo("Level 13", "OG_Lvl_13", 671.111f),
+                new LevelInfo("Level 14", "OG_Lvl_14", 671.111f),
+                new LevelInfo("Level 15", "OG_Lvl_15", 671.111f),
+                new LevelInfo("Level 16", "OG_Lvl_16", 671.111f),
+                new LevelInfo("Level 17", "OG_Lvl_17", 671.111f),
+                new LevelInfo("Level 18", "OG_Lvl_18", 671.111f),
+                new LevelInfo("Level 19", "OG_Lvl_19", 671.111f),
+                new LevelInfo("Level 20", "OG_Lvl_20", 671.111f),
+                new LevelInfo("Level 21", "OG_Lvl_21", 671.111f),
+                new LevelInfo("Level 22", "OG_Lvl_22", 671.111f),
+                new LevelInfo("Level 23", "OG_Lvl_23", 671.111f),
+                new LevelInfo("Level 24", "OG_Lvl_24", 671.111f),
+                new LevelInfo("Level 25", "OG_Lvl_25", 671.111f),
+            }
+        )
+    };
 
     public static Dictionary<string, int> levelDirectoryIndices = new Dictionary<string, int>();
     public static Dictionary<string, int> levelIndices = new Dictionary<string, int>();
@@ -34,25 +69,42 @@ public static class LevelAssets : object
         if (isInit) return;
         isInit = true;
         for (int i = 0; i < levelDirectories.Length; i++) {
-            for (int j = 0; j < levelDirectories[i].levelNames.Length; j++) {
-                levelDirectoryIndices.Add(levelDirectories[i].levelNames[j], i);
-                levelIndices.Add(levelDirectories[i].levelNames[j], j);
+            for (int j = 0; j < levelDirectories[i].levels.Length; j++) {
+                levelDirectoryIndices.Add(levelDirectories[i].levels[j].sceneName, i);
+                levelIndices.Add(levelDirectories[i].levels[j].sceneName, j);
             }
         }
     }
 
-    public static string GetLevelSelectSceneName(string currLevel) {
-        int directoryIndex = levelDirectoryIndices[currLevel];
+    public static string GetLevelFolderSceneName(string currLevelSceneName) {
+        int directoryIndex = levelDirectoryIndices[currLevelSceneName];
         return levelDirectories[directoryIndex].sceneName;
     }
 
-    public static string GetNextLevelName(string currLevel) {
-        int directoryIndex = levelDirectoryIndices[currLevel];
-        int levelIndex = levelIndices[currLevel];
-        if (levelIndex < levelDirectories[directoryIndex].levelNames.Length) {
-            return levelDirectories[directoryIndex].levelNames[levelIndex + 1];
+    public static string GetLevelFolderDisplayName(string currLevelSceneName) {
+        int directoryIndex = levelDirectoryIndices[currLevelSceneName];
+        return levelDirectories[directoryIndex].displayName;
+    }
+
+    public static string GetNextLevelSceneName(string currLevelSceneName) {
+        int directoryIndex = levelDirectoryIndices[currLevelSceneName];
+        int levelIndex = levelIndices[currLevelSceneName];
+        if (levelIndex < levelDirectories[directoryIndex].levels.Length) {
+            return levelDirectories[directoryIndex].levels[levelIndex + 1].sceneName;
         }
         return null;
+    }
+
+    public static string GetLevelDisplayName(string levelSceneName) {
+        int directoryIndex = levelDirectoryIndices[levelSceneName];
+        int levelIndex = levelIndices[levelSceneName];
+        return levelDirectories[directoryIndex].levels[levelIndex].displayName;
+    }
+
+    public static float GetLevelMakerTime(string levelSceneName) {
+        int directoryIndex = levelDirectoryIndices[levelSceneName];
+        int levelIndex = levelIndices[levelSceneName];
+        return levelDirectories[directoryIndex].levels[levelIndex].makerTime;
     }
 
     public static string ConvertTimeToString(float time) {

@@ -52,31 +52,28 @@ public class OGDisplayDataScript : MonoBehaviour
         
     }
 
-    // TODO: fix level names somehow (read below)
-    // Zach, you brought upon yourself that the level has 2 names >:(
-    // Either change it so the scene names are the same as the level names
-    // or we get to add something in LevelAssets to map between the 2
-    public void ShowLevelData(string levelName) {
+    public void ShowLevelData(string levelSceneName) {
+        // TODO: only call this once, but make sure it is called before the data will be used.
+        LevelAssets.InitLevelDirectories();
         bronzeMedal.enabled = false;
         silverMedal.enabled = false;
         goldMedal.enabled = false;
         makerMedal.enabled = false;
-        levelText.SetText(levelName);
-        playerBestTime = levelTimes.GetLevelTime("OGLevels", levelName);
+        string levelDisplayName = LevelAssets.GetLevelDisplayName(levelSceneName);
+        string GetLevelFolderDisplayName = LevelAssets.GetLevelFolderDisplayName(levelSceneName);
+        levelText.SetText(levelDisplayName);
+        playerBestTime = levelTimes.GetLevelTime(GetLevelFolderDisplayName, levelSceneName);
         string playerBestTimeString = LevelAssets.ConvertTimeToString(playerBestTime);
         bestTimeText.SetText("Best Time: " + playerBestTimeString);
 
-        // TODO: add level medal times in LevelAssets.cs
-        // We will change this out to pull values from
-        // LevelAssets.cs but for now they will just all be the same
-        makerMedalTime = 26.999f; //Make Sure to Set both here and in level
-        goldMedalTime = 30f;   //Maker Medal Time Times 1.1 rounded up to second
-        silverMedalTime = 34f; //Maker Medal Time Times 1.25 rounded up to second
-        bronzeMedalTime = 41f; //Maker Medal Time Times 1.5 rounded up to second
-        bronzeMedal.enabled = playerBestTime < bronzeMedalTime;
-        silverMedal.enabled = playerBestTime < silverMedalTime;
-        goldMedal.enabled = playerBestTime < goldMedalTime;
-        makerMedal.enabled = playerBestTime < makerMedalTime;
+        makerMedalTime = LevelAssets.GetLevelMakerTime(levelSceneName); // Make Sure to Set both here and in level
+        goldMedalTime = Mathf.Ceil(makerMedalTime * 1.1f);
+        silverMedalTime = Mathf.Ceil(makerMedalTime * 1.25f);
+        bronzeMedalTime = Mathf.Ceil(makerMedalTime * 1.5f);
+        bronzeMedal.enabled = playerBestTime <= bronzeMedalTime;
+        silverMedal.enabled = playerBestTime <= silverMedalTime;
+        goldMedal.enabled = playerBestTime <= goldMedalTime;
+        makerMedal.enabled = playerBestTime <= makerMedalTime;
         makerTime.SetText("Maker Time: " + LevelAssets.ConvertTimeToString(makerMedalTime));
         goldTime.SetText("Gold Time: " + LevelAssets.ConvertTimeToString(goldMedalTime));
         silverTime.SetText("Silver Time: " + LevelAssets.ConvertTimeToString(silverMedalTime));

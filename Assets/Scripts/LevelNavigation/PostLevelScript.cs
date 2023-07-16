@@ -18,7 +18,7 @@ public class PostLevelScript : MonoBehaviour
     public void backToLevelSelect() {
         // TODO: only call this once, but make sure it is called before the data will be used.
         LevelAssets.InitLevelDirectories();
-        SceneManager.LoadScene(LevelAssets.GetLevelSelectSceneName(SceneManager.GetActiveScene().name));
+        SceneManager.LoadScene(LevelAssets.GetLevelFolderSceneName(SceneManager.GetActiveScene().name));
     }
 
     public void restartLevel() {
@@ -29,12 +29,12 @@ public class PostLevelScript : MonoBehaviour
         // TODO: only call this once, but make sure it is called before the data will be used.
         LevelAssets.InitLevelDirectories();
         string currentLevelName = SceneManager.GetActiveScene().name;
-        string nextLevelName = LevelAssets.GetNextLevelName(currentLevelName);
+        string nextLevelName = LevelAssets.GetNextLevelSceneName(currentLevelName);
         if (nextLevelName != null) {
             SceneManager.LoadScene(nextLevelName);
         }
         else {
-            SceneManager.LoadScene(LevelAssets.GetLevelSelectSceneName(currentLevelName));
+            SceneManager.LoadScene(LevelAssets.GetLevelFolderSceneName(currentLevelName));
         }
     }
 }
