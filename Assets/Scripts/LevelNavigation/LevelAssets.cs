@@ -41,7 +41,7 @@ public static class LevelAssets : object
                 new LevelInfo("Level 6", "OG_Lvl_6", 27.316f),
                 new LevelInfo("Level 7", "OG_Lvl_7", 671.111f),
                 new LevelInfo("Level 8", "OG_Lvl_8", 671.111f),
-                new LevelInfo("Level 9", "OG_Lvl_9", 671.111f),
+                new LevelInfo("Level 9", "OG_Lvl_9", 29.320f),
                 new LevelInfo("Level 10", "OG_Lvl_10", 30.419f),
                 new LevelInfo("Level 11", "OG_Lvl_11", 671.111f),
                 new LevelInfo("Level 12", "OG_Lvl_12", 26.500f),
