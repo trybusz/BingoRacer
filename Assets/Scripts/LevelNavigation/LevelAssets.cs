@@ -108,6 +108,7 @@ public static class LevelAssets : object
     }
 
     public static string ConvertTimeToString(float time) {
+        time = Mathf.Abs(time);
         int min = (int)time / 60;
         int sec = (int)time % 60;
         int mil = (int)Mathf.Round((time % 1) * 1000);

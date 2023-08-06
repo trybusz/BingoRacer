@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: probably only write one folder of data per file. otherwise,
+// this will bloat really badly as we add lots of levels
 [System.Serializable]
 public class LevelTimesData {
 
@@ -26,6 +28,22 @@ public class LevelTimesData {
         return -2; // folder not found
     }
 
+    public int UpdateLevelCheckpointTimes(string folderName, string levelName, List<float> checkpointTimes) {
+        for (int i = 0; i < levelFolders.Count; i++) {
+            if (levelFolders[i].name == folderName) {
+                for (int j = 0; j < levelFolders[i].levelTimes.Count; j++) {
+                    if (levelFolders[i].levelTimes[j].name == levelName) {
+                        levelFolders[i].levelTimes[j].checkpointTimes = checkpointTimes;
+                        PersistentDataSaveLoad.WriteToFile("LevelTimesData", this.ToJson());
+                        return 0;
+                    }
+                }
+                return -1; // level not found in folder
+            }
+        }
+        return -2; // folder not found
+    }
+
     public float GetLevelTime(string folderName, string levelName) {
         foreach(LevelFolder folder in levelFolders) {
             if (folder.name == folderName) {
@@ -39,13 +57,28 @@ public class LevelTimesData {
         return -1f;
     }
 
+    public List<float> GetLevelCheckpointTimes(string folderName, string levelName) {
+        foreach(LevelFolder folder in levelFolders) {
+            if (folder.name == folderName) {
+                foreach(LevelTime level in folder.levelTimes) {
+                    if (level.name == levelName) {
+                        return level.checkpointTimes;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     [System.Serializable]
     public class LevelTime {
         public string name;
         public float time;
+        public List<float> checkpointTimes;
         public LevelTime(string levelName) {
             name = levelName;
             time = 3355.555f;
+            checkpointTimes = null;
         }
     }
 
@@ -109,7 +142,7 @@ public class LevelTimesData {
         Folder1_levelTimes.Add(new LevelTime("OG_Lvl_25"));
 
         List<LevelFolder> levelFolders = new List<LevelFolder>();
-        levelFolders.Add(new LevelFolder("OGLevels", Folder1_levelTimes));
+        levelFolders.Add(new LevelFolder("OG_Lvl_Select", Folder1_levelTimes));
 
         this.levelFolders = levelFolders;
     }

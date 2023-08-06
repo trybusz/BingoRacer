@@ -60,9 +60,9 @@ public class OGDisplayDataScript : MonoBehaviour
         goldMedal.enabled = false;
         makerMedal.enabled = false;
         string levelDisplayName = LevelAssets.GetLevelDisplayName(levelSceneName);
-        string GetLevelFolderDisplayName = LevelAssets.GetLevelFolderDisplayName(levelSceneName);
+        string levelFolderSceneName = LevelAssets.GetLevelFolderSceneName(levelSceneName);
         levelText.SetText(levelDisplayName);
-        playerBestTime = levelTimes.GetLevelTime(GetLevelFolderDisplayName, levelSceneName);
+        playerBestTime = levelTimes.GetLevelTime(levelFolderSceneName, levelSceneName);
         string playerBestTimeString = LevelAssets.ConvertTimeToString(playerBestTime);
         bestTimeText.SetText("Best Time: " + playerBestTimeString);
 
