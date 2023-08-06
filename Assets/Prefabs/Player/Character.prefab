@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3284728727464370059}
   - component: {fileID: 3284728727464370056}
   - component: {fileID: 6624685763843659593}
+  - component: {fileID: 1208876991}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -40,7 +41,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3284728727464370160
 SpriteRenderer:
@@ -260,6 +261,7 @@ MonoBehaviour:
   checkpointPosition: {x: 0, y: 0, z: 0}
   collectedCheckpoint: 0
   checkpoints: []
+  finished: 0
 --- !u!114 &3284728727464370061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +281,7 @@ MonoBehaviour:
   stopRisingGravity: 20
   fallingGravity: 10
   restingGravity: 1
+  maxFallSpeed: -35
   dashingGravity: 0
   jumpBufferTime: 0.2
   coyoteTime: 0.08
@@ -288,6 +291,7 @@ MonoBehaviour:
   jumpDesired: 0
   jumpsUsed: 0
   justJumped: 0
+  finished: 0
 --- !u!114 &3284728727464370058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +315,7 @@ MonoBehaviour:
   dashDeceleration: 0
   inDash: 0
   refreshDashTime: -1
+  finished: 0
 --- !u!114 &3284728727464370059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0, y: 0, z: 0}
+  finished: 0
 --- !u!114 &6624685763843659593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,3 +378,15 @@ MonoBehaviour:
   m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1208876991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284728727464370166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f345c750713e1499f4395a477d8d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

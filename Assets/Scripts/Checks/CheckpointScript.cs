@@ -17,11 +17,11 @@ public class CheckpointScript : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+/*    private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
             collected = true;
         }
-    }
+    }*/
 
     public void setUncollected() {
         collected = false;
