@@ -6,18 +6,25 @@ using TMPro;
 public class ShowCheckpointTimeScript : MonoBehaviour
 {
     private TMP_Text checkpointText = null;
+    private TMP_Text checkpointCountText = null;
     TimeScript timeScript = null;
     private int tempTimeMinutes;
     private float tempTimeSeconds;
+    public int checkpointCounter;
+    public GameObject[] checkpoints;
 
     // Start is called before the first frame update
     void Start()
     {
         checkpointText = GameObject.Find("CheckpointTime").GetComponent<TMP_Text>();
+        checkpointCountText = GameObject.Find("CheckpointCounter").GetComponent<TMP_Text>();
         checkpointText.enabled = false;
         timeScript = gameObject.GetComponent<TimeScript>();
         tempTimeMinutes = 0;
         tempTimeSeconds = 0f;
+        checkpointCounter = 0;
+        checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        DisplayCheckpointCount();
     }
 
     // Update is called once per frame
@@ -27,6 +34,8 @@ public class ShowCheckpointTimeScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Checkpoint") && other.GetComponent<CheckpointScript>().collected == false) {
+            checkpointCounter++;
+            DisplayCheckpointCount();
             other.GetComponent<CheckpointScript>().collected = true;
             StopCoroutine(invisTime());
             checkpointText.enabled = true;
@@ -51,5 +60,9 @@ public class ShowCheckpointTimeScript : MonoBehaviour
     IEnumerator invisTime() {
         yield return new WaitForSeconds(2.5f);
         checkpointText.enabled = false;
+    }
+
+    public void DisplayCheckpointCount() {
+        checkpointCountText.SetText(checkpointCounter + "/" + checkpoints.Length);
     }
 }

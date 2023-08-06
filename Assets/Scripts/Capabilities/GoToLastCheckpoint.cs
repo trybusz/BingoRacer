@@ -6,6 +6,7 @@ using UnityEngine.Windows;
 
 public class GoToLastCheckpoint : MonoBehaviour
 {
+    ShowCheckpointTimeScript showCheckpointTimeScript = null;
     //[SerializeField] private InputController input = null;
     public Vector3 checkpointPosition;
     public bool collectedCheckpoint;
@@ -23,6 +24,7 @@ public class GoToLastCheckpoint : MonoBehaviour
     {
         collectedCheckpoint = false;
         playerInput = GetComponent<PlayerInput>();
+        showCheckpointTimeScript = gameObject.GetComponent<ShowCheckpointTimeScript>();
     }
 
     // Update is called once per frame
@@ -36,6 +38,8 @@ public class GoToLastCheckpoint : MonoBehaviour
         //if (input.RetrieveSpawnInputDown()) { // Old
         if (playerInput.actions["Restart"].ReadValue<float>() == 1) {
             collectedCheckpoint = false;
+            showCheckpointTimeScript.checkpointCounter = 0;
+            showCheckpointTimeScript.DisplayCheckpointCount();
 
             checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
             for (int i = 0; i < checkpoints.Length; i++) {
