@@ -23,6 +23,7 @@ public class CheckCheckpoints : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         timeScript = player.GetComponent<TimeScript>();
         showCheckpointTimeScript = player.GetComponent<ShowCheckpointTimeScript>();
+        checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
 
         //endPanel = GameObject.Find("FinishedLevelCanvas").GetComponent<GameObject>();
         endPanel.SetActive(false);
@@ -35,7 +36,6 @@ public class CheckCheckpoints : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
         for (int i = 0; i < checkpoints.Length; i++) {
             if (checkpoints[i].GetComponent<CheckpointScript>().isCollected()) {
                 checkpointCounter++;

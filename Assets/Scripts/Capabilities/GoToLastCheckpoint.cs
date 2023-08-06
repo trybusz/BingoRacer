@@ -25,6 +25,7 @@ public class GoToLastCheckpoint : MonoBehaviour
         collectedCheckpoint = false;
         playerInput = GetComponent<PlayerInput>();
         showCheckpointTimeScript = gameObject.GetComponent<ShowCheckpointTimeScript>();
+        checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
     }
 
     // Update is called once per frame
@@ -41,7 +42,6 @@ public class GoToLastCheckpoint : MonoBehaviour
             showCheckpointTimeScript.checkpointCounter = 0;
             showCheckpointTimeScript.DisplayCheckpointCount();
 
-            checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
             for (int i = 0; i < checkpoints.Length; i++) {
                 if (checkpoints[i].GetComponent<CheckpointScript>().isCollected()) {
                     checkpoints[i].GetComponent<CheckpointScript>().setUncollected();
