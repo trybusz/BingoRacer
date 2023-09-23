@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class OGDisplayDataScript : MonoBehaviour
+public class DisplayLevelDataScript : MonoBehaviour
 {
     private TMP_Text levelText = null;
     private TMP_Text bestTimeText = null;

@@ -51,8 +51,6 @@ public class TimeScript : MonoBehaviour
             }
             restarted = false;
             inStart = false;
-            
         }
     }
-
 }

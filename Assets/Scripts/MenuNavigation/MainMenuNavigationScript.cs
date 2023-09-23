@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuButtonsScript : MonoBehaviour
+public class MainMenuNavigationScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class MainMenuButtonsScript : MonoBehaviour
     }
 
     public void toLevelSelect() {
-        SceneManager.LoadScene("LevelSelector");
+        SceneManager.LoadScene("SingleplayerMenu");
     }
 
     public void toSetControls() {

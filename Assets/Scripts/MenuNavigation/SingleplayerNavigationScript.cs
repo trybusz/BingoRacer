@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OGSelectButtonsScript : MonoBehaviour
+public class SingleplayerNavigationScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,11 +16,11 @@ public class OGSelectButtonsScript : MonoBehaviour
     {
         
     }
-    public void toLevelSelector() {
-        SceneManager.LoadScene("LevelSelector");
+    public void backToMainMenu() {
+        SceneManager.LoadScene("MainMenu");
     }
 
-    public void toLevel(string levelSceneName) {
-        SceneManager.LoadScene(levelSceneName);
+    public void toOGLevelSelect() {
+        SceneManager.LoadScene("OG_Lvl_Select");
     }
 }

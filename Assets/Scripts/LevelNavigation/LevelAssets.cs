@@ -30,6 +30,13 @@ public static class LevelAssets : object
     private static bool isInit = false;
     public static readonly LevelLocation[] levelDirectories = {
         new LevelLocation(
+            "Tutorials",
+            "OG_Tutorial",
+            new LevelInfo[1]{
+                new LevelInfo("Tutorial", "OG_Tutorial", 0f)
+            }
+        ),
+        new LevelLocation(
             "OGLevels",
             "OG_Lvl_Select",
             new LevelInfo[25]{
