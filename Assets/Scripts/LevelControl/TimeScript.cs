@@ -13,6 +13,7 @@ public class TimeScript : MonoBehaviour
     public float seconds;
     public float runTime;
     public float finalTime;
+    public bool restarted;
 
     // Start is called before the first frame update
     void Start()
@@ -36,16 +37,21 @@ public class TimeScript : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Start")) {
+        if (other.CompareTag("Start") && restarted) {
             inStart = true;
+
         }
         
 
     }
     private void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("Start")) {
+            if (restarted) {
+                timeOfStart = Time.timeSinceLevelLoad;
+            }
+            restarted = false;
             inStart = false;
-            timeOfStart = Time.timeSinceLevelLoad;
+            
         }
     }
 

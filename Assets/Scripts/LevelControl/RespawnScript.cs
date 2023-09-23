@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class RespawnScript : MonoBehaviour
 {
+    TimeScript timeScript = null;
     //[SerializeField] private InputController input = null;
     public Vector3 spawnPosition;
     //GameObject lastCheckpoint;
@@ -18,13 +19,16 @@ public class RespawnScript : MonoBehaviour
     void Start() {
         spawnPosition = GameObject.FindGameObjectWithTag("Start").transform.position;
         playerInput = GetComponent<PlayerInput>();
+        timeScript = gameObject.GetComponent<TimeScript>();
     }
 
     // Update is called once per frame
     void Update() {
         //if (input.RetrieveSpawnInputDown()) { // Old
         if (!finished && playerInput.actions["Restart"].ReadValue<float>() == 1) {
+            timeScript.restarted = true;
             this.gameObject.transform.position = spawnPosition;
+            
         }
     }
 }
