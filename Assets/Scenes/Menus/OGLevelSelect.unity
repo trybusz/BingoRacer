@@ -486,7 +486,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_15
+          m_StringArgument: OGLevel15
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &70010270
@@ -553,7 +553,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_15
+            m_StringArgument: OGLevel15
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &74026527
@@ -1809,7 +1809,6 @@ GameObject:
   - component: {fileID: 342399596}
   - component: {fileID: 342399595}
   - component: {fileID: 342399594}
-  - component: {fileID: 342399598}
   - component: {fileID: 342399597}
   m_Layer: 5
   m_Name: Level 9
@@ -1892,7 +1891,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_9
+          m_StringArgument: OGLevel9
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &342399595
@@ -1959,22 +1958,9 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_9
+            m_StringArgument: OGLevel9
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &342399598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342399592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!1 &351602769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2609,7 +2595,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_22
+          m_StringArgument: OGLevel22
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &379706029
@@ -2676,7 +2662,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_22
+            m_StringArgument: OGLevel22
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &416272511
@@ -2690,7 +2676,7 @@ GameObject:
   - component: {fileID: 416272513}
   - component: {fileID: 416272512}
   m_Layer: 0
-  m_Name: OG_Lvl_Select_Buttons
+  m_Name: OGLevelSelectButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3701,7 +3687,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_19
+          m_StringArgument: OGLevel19
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &776649328
@@ -3768,7 +3754,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_19
+            m_StringArgument: OGLevel19
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &787416031
@@ -4326,7 +4312,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_24
+          m_StringArgument: OGLevel24
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1016611168
@@ -4393,7 +4379,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_24
+            m_StringArgument: OGLevel24
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &1016611171
@@ -5973,8 +5959,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6170,7 +6156,7 @@ GameObject:
   - component: {fileID: 1451497025}
   - component: {fileID: 1451497024}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6336,7 +6322,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_12
+          m_StringArgument: OGLevel12
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1480003792
@@ -6403,7 +6389,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_12
+            m_StringArgument: OGLevel12
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1499664003
@@ -6842,7 +6828,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_2
+          m_StringArgument: OGLevel2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1651294387
@@ -6909,7 +6895,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_2
+            m_StringArgument: OGLevel2
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1727118673
@@ -7006,7 +6992,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_1
+          m_StringArgument: OGLevel1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1727118676
@@ -7073,7 +7059,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_1
+            m_StringArgument: OGLevel1
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1769234738
@@ -7305,7 +7291,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_18
+          m_StringArgument: OGLevel18
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1834164596
@@ -7372,7 +7358,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_18
+            m_StringArgument: OGLevel18
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1858395901
@@ -8331,7 +8317,7 @@ GameObject:
   - component: {fileID: 2048114171}
   - component: {fileID: 2048114172}
   m_Layer: 0
-  m_Name: OG_Lvl_Display_Data
+  m_Name: OGLevelDisplayData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8536,7 +8522,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_10
+          m_StringArgument: OGLevel10
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2053365109
@@ -8603,7 +8589,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_10
+            m_StringArgument: OGLevel10
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &2086747680
@@ -8834,7 +8820,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OG_Lvl_6
+          m_StringArgument: OGLevel6
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2122606515
@@ -8901,7 +8887,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: OG_Lvl_6
+            m_StringArgument: OGLevel6
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &2123775567

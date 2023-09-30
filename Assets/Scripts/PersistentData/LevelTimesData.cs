@@ -115,34 +115,34 @@ public class LevelTimesData {
         // Zach is the worst for making me hard code this :)
         
         List<LevelTime> Folder1_levelTimes = new List<LevelTime>();
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_1"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_2"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_3"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_4"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_5"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_6"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_7"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_8"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_9"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_10"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_11"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_12"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_13"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_14"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_15"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_16"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_17"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_18"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_19"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_20"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_21"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_22"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_23"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_24"));
-        Folder1_levelTimes.Add(new LevelTime("OG_Lvl_25"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel1"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel2"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel3"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel4"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel5"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel6"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel7"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel8"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel9"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel10"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel11"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel12"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel13"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel14"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel15"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel16"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel17"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel18"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel19"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel20"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel21"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel22"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel23"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel24"));
+        Folder1_levelTimes.Add(new LevelTime("OGLevel25"));
 
         List<LevelFolder> levelFolders = new List<LevelFolder>();
-        levelFolders.Add(new LevelFolder("OG_Lvl_Select", Folder1_levelTimes));
+        levelFolders.Add(new LevelFolder("OGLevelSelect", Folder1_levelTimes));
 
         this.levelFolders = levelFolders;
     }

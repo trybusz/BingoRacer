@@ -43,7 +43,7 @@ public class DisplayLevelDataScript : MonoBehaviour
         silverTime = GameObject.Find("Silver Time").GetComponent<TMP_Text>();
         bronzeTime = GameObject.Find("Bronze Time").GetComponent<TMP_Text>();
         levelTimes = new LevelTimesData();
-        ShowLevelData("OG_Lvl_1");
+        ShowLevelData("OGLevel1");
     }
 
     // Update is called once per frame

@@ -17,8 +17,12 @@ public class MainMenuNavigationScript : MonoBehaviour
         
     }
 
-    public void toLevelSelect() {
+    public void toSingleplayer() {
         SceneManager.LoadScene("SingleplayerMenu");
+    }
+
+    public void toMultiplayer() {
+        SceneManager.LoadScene("MultiplayerMenu");
     }
 
     public void toSetControls() {
@@ -26,8 +30,9 @@ public class MainMenuNavigationScript : MonoBehaviour
     }
 
     public void toTutorial() {
-        SceneManager.LoadScene("OG_Tutorial");
+        SceneManager.LoadScene("OGTutorial");
     }
+
     public void quitGame() {
         Application.Quit();
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PostLevelScript_OG_Tutorial : MonoBehaviour
+public class PostLevelScriptOGTutorial : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

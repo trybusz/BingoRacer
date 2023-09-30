@@ -21,6 +21,6 @@ public class SingleplayerNavigationScript : MonoBehaviour
     }
 
     public void toOGLevelSelect() {
-        SceneManager.LoadScene("OG_Lvl_Select");
+        SceneManager.LoadScene("OGLevelSelect");
     }
 }

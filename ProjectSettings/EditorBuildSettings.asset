@@ -15,49 +15,52 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/SingleplayerMenu.unity
     guid: b2898c8a809ad9d4d8f2098d95db6598
   - enabled: 1
-    path: Assets/Scenes/Menus/OG_Lvl_Select.unity
+    path: Assets/Scenes/Menus/OGLevelSelect.unity
     guid: 2ad59a2396ee4e14eaa261dd5a0065ea
   - enabled: 1
-    path: Assets/Scenes/Menus/OG_Tutorial.unity
+    path: Assets/Scenes/Menus/OGTutorial.unity
     guid: 9a36c52428a61204b9a795a49bef3fd1
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_10.unity
+    path: Assets/Scenes/OGLevels/OGLevel10.unity
     guid: 9f195b658f340fa47b84c97ae077dd3a
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_12.unity
+    path: Assets/Scenes/OGLevels/OGLevel12.unity
     guid: fa433182f0198c3409caee5b19450ceb
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_18.unity
+    path: Assets/Scenes/OGLevels/OGLevel18.unity
     guid: 8e0508349da9e10419f61c99242bcee9
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_2.unity
+    path: Assets/Scenes/OGLevels/OGLevel2.unity
     guid: 8b6404cb752ea2741a101f61fea14f84
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_1.unity
+    path: Assets/Scenes/OGLevels/OGLevel1.unity
     guid: a6c1e5b110fe0824085e7032fa8f24b1
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_6.unity
+    path: Assets/Scenes/OGLevels/OGLevel6.unity
     guid: 512fc301816b51a44b9fb6bbb23ed14c
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_15.unity
+    path: Assets/Scenes/OGLevels/OGLevel15.unity
     guid: caa71334dfc62c74c91cd0045f6f2419
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_19.unity
+    path: Assets/Scenes/OGLevels/OGLevel19.unity
     guid: 22f37a49cf7451b499aaa9b27af460ff
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_22.unity
+    path: Assets/Scenes/OGLevels/OGLevel22.unity
     guid: bd6abe83b257e2049acfcee81db9d437
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_9.unity
+    path: Assets/Scenes/OGLevels/OGLevel9.unity
     guid: 7e4671e8f379b5640b601ad7b1b7bc9a
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_24.unity
+    path: Assets/Scenes/OGLevels/OGLevel24.unity
     guid: b691b715269df7e45922662da7f1abc7
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_4.unity
+    path: Assets/Scenes/OGLevels/OGLevel4.unity
     guid: e54d993f35cc1744ab96730311acc957
   - enabled: 1
-    path: Assets/Scenes/OGLevels/OG_Lvl_8.unity
+    path: Assets/Scenes/OGLevels/OGLevel8.unity
     guid: ed6538352032b4843959e2e589cac7aa
+  - enabled: 1
+    path: Assets/Scenes/Menus/MultiplayerMenu.unity
+    guid: f5a7b1a63d0fb9f4fb680c329a65056b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f29befd73cc6d6c4e8003264472aebff, type: 2}
