@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: TrybusKeatingGames
   productName: BingoRacer
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -138,7 +138,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: f29befd73cc6d6c4e8003264472aebff, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -656,7 +657,8 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Collab: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -670,11 +672,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 1
-  cloudProjectId: 
+  cloudProjectId: c3b45c52-5808-4bfd-8c4d-927ff56e1b14
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Bingo Racer
+  organizationId: philflip12
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

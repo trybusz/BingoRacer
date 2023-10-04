@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 1451624221}
   - component: {fileID: 1451624222}
   m_Layer: 0
-  m_Name: SinglePlayerOptions
+  m_Name: SingleplayerMenuNavigation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

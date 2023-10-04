@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 425829442}
   - component: {fileID: 425829443}
   m_Layer: 0
-  m_Name: BackToMainMenuScriptHolder
+  m_Name: ControlsMenuNavigation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2342,7 +2342,7 @@ GameObject:
   - component: {fileID: 1444495158}
   - component: {fileID: 1444495160}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: ControlsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

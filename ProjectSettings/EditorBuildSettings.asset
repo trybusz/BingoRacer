@@ -62,5 +62,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/MultiplayerMenu.unity
     guid: f5a7b1a63d0fb9f4fb680c329a65056b
+  - enabled: 1
+    path: Assets/Scenes/Menus/HostGameMenu.unity
+    guid: 4e99bb900804fd34784a796f3796c550
+  - enabled: 1
+    path: Assets/Scenes/Menus/JoinGameMenu.unity
+    guid: f513e813129bc504183069ba34db271b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f29befd73cc6d6c4e8003264472aebff, type: 2}

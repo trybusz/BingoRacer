@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Start
   - Checkpoint
+  - MultiplayerManager
   layers:
   - Default
   - TransparentFX

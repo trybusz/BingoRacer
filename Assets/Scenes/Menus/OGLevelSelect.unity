@@ -2676,7 +2676,7 @@ GameObject:
   - component: {fileID: 416272513}
   - component: {fileID: 416272512}
   m_Layer: 0
-  m_Name: OGLevelSelectButtons
+  m_Name: LevelSelectMenuNavigation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8317,7 +8317,7 @@ GameObject:
   - component: {fileID: 2048114171}
   - component: {fileID: 2048114172}
   m_Layer: 0
-  m_Name: OGLevelDisplayData
+  m_Name: LevelSelectDisplayData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

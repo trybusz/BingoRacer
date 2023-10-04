@@ -1610,7 +1610,7 @@ GameObject:
   - component: {fileID: 1907146635}
   - component: {fileID: 1907146634}
   m_Layer: 0
-  m_Name: MainMenuOptions
+  m_Name: MainMenuNavigation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
