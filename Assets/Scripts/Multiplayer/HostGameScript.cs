@@ -1,6 +1,8 @@
 using TMPro;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HostGameScript : MonoBehaviour {
 
@@ -13,5 +15,11 @@ public class HostGameScript : MonoBehaviour {
         Debug.Log("Created Relay");
         string joinCode = manager.GetComponent<MultiplayerManagerScript>().joinCode;
         joinCodeText.GetComponent<TextMeshProUGUI>().SetText("Join Code: " + joinCode);
+    }
+
+    public void StartGame() {
+        NetworkManager multiplayerManager = GameObject.FindGameObjectWithTag("MultiplayerManager").GetComponent<NetworkManager>();
+        NetworkManager networkManager = multiplayerManager.GetComponent<NetworkManager>();
+        networkManager.SceneManager.LoadScene("BingoBoardMenu", LoadSceneMode.Single);
     }
 }

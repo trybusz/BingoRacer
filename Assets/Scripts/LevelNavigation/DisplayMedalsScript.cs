@@ -8,7 +8,6 @@ public class DisplayMedalsScript : MonoBehaviour {
     public void displayMedals(float playerTime) {
         // TODO: only call this once, but make sure it is called before the data will be used.
         string levelSceneName = SceneManager.GetActiveScene().name;
-        LevelAssets.InitLevelDirectories();
         float makerMedalTime = LevelAssets.GetLevelMakerTime(levelSceneName);
         float goldMedalTime = Mathf.Ceil(makerMedalTime * 1.1f);
         float silverMedalTime = Mathf.Ceil(makerMedalTime * 1.25f);

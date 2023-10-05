@@ -53,8 +53,6 @@ public class DisplayLevelDataScript : MonoBehaviour
     }
 
     public void ShowLevelData(string levelSceneName) {
-        // TODO: only call this once, but make sure it is called before the data will be used.
-        LevelAssets.InitLevelDirectories();
         bronzeMedal.enabled = false;
         silverMedal.enabled = false;
         goldMedal.enabled = false;

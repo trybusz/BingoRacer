@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public static class LevelAssets : object
@@ -9,10 +10,12 @@ public static class LevelAssets : object
         public string displayName;
         public string sceneName;
         public float makerTime;
-        public LevelInfo(string displayName, string sceneName, float makerTime) {
+        public bool bingoValid;
+        public LevelInfo(string displayName, string sceneName, float makerTime, bool bingoValid) {
             this.displayName = displayName;
             this.sceneName = sceneName;
             this.makerTime = makerTime;
+            this.bingoValid = bingoValid;
         }
     }
 
@@ -33,44 +36,45 @@ public static class LevelAssets : object
             "Tutorials",
             "OGTutorial",
             new LevelInfo[1]{
-                new LevelInfo("Tutorial", "OGTutorial", 0f)
+                new LevelInfo("Tutorial", "OGTutorial", 0f, false)
             }
         ),
         new LevelLocation(
             "OGLevels",
             "OGLevelSelect",
             new LevelInfo[25]{
-                new LevelInfo("Level 1", "OGLevel1", 26.999f),
-                new LevelInfo("Level 2", "OGLevel2", 29.956f),
-                new LevelInfo("Level 3", "OGLevel3", 671.111f),
-                new LevelInfo("Level 4", "OGLevel4", 47.540f),
-                new LevelInfo("Level 5", "OGLevel5", 671.111f),
-                new LevelInfo("Level 6", "OGLevel6", 27.316f),
-                new LevelInfo("Level 7", "OGLevel7", 42.419f),
-                new LevelInfo("Level 8", "OGLevel8", 24.839f),
-                new LevelInfo("Level 9", "OGLevel9", 29.320f),
-                new LevelInfo("Level 10", "OGLevel10", 30.419f),
-                new LevelInfo("Level 11", "OGLevel11", 671.111f),
-                new LevelInfo("Level 12", "OGLevel12", 26.500f),
-                new LevelInfo("Level 13", "OGLevel13", 671.111f),
-                new LevelInfo("Level 14", "OGLevel14", 671.111f),
-                new LevelInfo("Level 15", "OGLevel15", 25.360f),
-                new LevelInfo("Level 16", "OGLevel16", 671.111f),
-                new LevelInfo("Level 17", "OGLevel17", 671.111f),
-                new LevelInfo("Level 18", "OGLevel18", 29.215f),
-                new LevelInfo("Level 19", "OGLevel19", 31.599f),
-                new LevelInfo("Level 20", "OGLevel20", 671.111f),
-                new LevelInfo("Level 21", "OGLevel21", 671.111f),
-                new LevelInfo("Level 22", "OGLevel22", 21.379f),
-                new LevelInfo("Level 23", "OGLevel23", 671.111f),
-                new LevelInfo("Level 24", "OGLevel24", 37.079f),
-                new LevelInfo("Level 25", "OGLevel25", 671.111f),
+                new LevelInfo("Level 1", "OGLevel1", 26.999f, true),
+                new LevelInfo("Level 2", "OGLevel2", 29.956f, true),
+                new LevelInfo("Level 3", "OGLevel3", 671.111f, true),
+                new LevelInfo("Level 4", "OGLevel4", 47.540f, true),
+                new LevelInfo("Level 5", "OGLevel5", 671.111f, true),
+                new LevelInfo("Level 6", "OGLevel6", 27.316f, true),
+                new LevelInfo("Level 7", "OGLevel7", 42.419f, true),
+                new LevelInfo("Level 8", "OGLevel8", 24.839f, true),
+                new LevelInfo("Level 9", "OGLevel9", 29.320f, true),
+                new LevelInfo("Level 10", "OGLevel10", 30.419f, true),
+                new LevelInfo("Level 11", "OGLevel11", 671.111f, true),
+                new LevelInfo("Level 12", "OGLevel12", 26.500f, true),
+                new LevelInfo("Level 13", "OGLevel13", 671.111f, true),
+                new LevelInfo("Level 14", "OGLevel14", 671.111f, true),
+                new LevelInfo("Level 15", "OGLevel15", 25.360f, true),
+                new LevelInfo("Level 16", "OGLevel16", 671.111f, true),
+                new LevelInfo("Level 17", "OGLevel17", 671.111f, true),
+                new LevelInfo("Level 18", "OGLevel18", 29.215f, true),
+                new LevelInfo("Level 19", "OGLevel19", 31.599f, true),
+                new LevelInfo("Level 20", "OGLevel20", 671.111f, true),
+                new LevelInfo("Level 21", "OGLevel21", 671.111f, true),
+                new LevelInfo("Level 22", "OGLevel22", 21.379f, true),
+                new LevelInfo("Level 23", "OGLevel23", 671.111f, true),
+                new LevelInfo("Level 24", "OGLevel24", 37.079f, true),
+                new LevelInfo("Level 25", "OGLevel25", 671.111f, true),
             }
         )
     };
 
     public static Dictionary<string, int> levelDirectoryIndices = new Dictionary<string, int>();
     public static Dictionary<string, int> levelIndices = new Dictionary<string, int>();
+    public static List<string> bingoLevelSceneNames = new List<string>();
 
     public static void InitLevelDirectories() {
         if (isInit) return;
@@ -79,21 +83,27 @@ public static class LevelAssets : object
             for (int j = 0; j < levelDirectories[i].levels.Length; j++) {
                 levelDirectoryIndices.Add(levelDirectories[i].levels[j].sceneName, i);
                 levelIndices.Add(levelDirectories[i].levels[j].sceneName, j);
+                if (levelDirectories[i].levels[j].bingoValid) {
+                    bingoLevelSceneNames.Add(levelDirectories[i].levels[j].sceneName);
+                }
             }
         }
     }
 
     public static string GetLevelFolderSceneName(string currLevelSceneName) {
+        InitLevelDirectories();
         int directoryIndex = levelDirectoryIndices[currLevelSceneName];
         return levelDirectories[directoryIndex].sceneName;
     }
 
     public static string GetLevelFolderDisplayName(string currLevelSceneName) {
+        InitLevelDirectories();
         int directoryIndex = levelDirectoryIndices[currLevelSceneName];
         return levelDirectories[directoryIndex].displayName;
     }
 
     public static string GetNextLevelSceneName(string currLevelSceneName) {
+        InitLevelDirectories();
         int directoryIndex = levelDirectoryIndices[currLevelSceneName];
         int levelIndex = levelIndices[currLevelSceneName];
         if (levelIndex < levelDirectories[directoryIndex].levels.Length) {
@@ -103,15 +113,26 @@ public static class LevelAssets : object
     }
 
     public static string GetLevelDisplayName(string levelSceneName) {
+        InitLevelDirectories();
         int directoryIndex = levelDirectoryIndices[levelSceneName];
         int levelIndex = levelIndices[levelSceneName];
         return levelDirectories[directoryIndex].levels[levelIndex].displayName;
     }
 
     public static float GetLevelMakerTime(string levelSceneName) {
+        InitLevelDirectories();
         int directoryIndex = levelDirectoryIndices[levelSceneName];
         int levelIndex = levelIndices[levelSceneName];
         return levelDirectories[directoryIndex].levels[levelIndex].makerTime;
+    }
+
+    public static string[] GetBingoLevelSceneNames() {
+        InitLevelDirectories();
+        string[] names = new string[bingoLevelSceneNames.Count];
+        for (int i = 0; i < names.Length; i++) {
+            names[i] = bingoLevelSceneNames[i];
+        }
+        return names;
     }
 
     public static string ConvertTimeToString(float time) {

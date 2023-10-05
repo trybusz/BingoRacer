@@ -16,8 +16,6 @@ public class PostLevelScript : MonoBehaviour
     }
 
     public void backToLevelSelect() {
-        // TODO: only call this once, but make sure it is called before the data will be used.
-        LevelAssets.InitLevelDirectories();
         SceneManager.LoadScene(LevelAssets.GetLevelFolderSceneName(SceneManager.GetActiveScene().name));
     }
 
@@ -26,8 +24,6 @@ public class PostLevelScript : MonoBehaviour
     }
 
     public void nextLevel() {
-        // TODO: only call this once, but make sure it is called before the data will be used.
-        LevelAssets.InitLevelDirectories();
         string currentLevelName = SceneManager.GetActiveScene().name;
         string nextLevelName = LevelAssets.GetNextLevelSceneName(currentLevelName);
         if (nextLevelName != null) {

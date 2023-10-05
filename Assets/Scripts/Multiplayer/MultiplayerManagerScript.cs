@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
@@ -10,9 +8,7 @@ using Unity.Services.Relay.Models;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class MultiplayerManagerScript : MonoBehaviour
-{
-
+public class MultiplayerManagerScript : MonoBehaviour {
     public static MultiplayerManagerScript instance { get; private set; }
 
     public string joinCode = "NotSet";

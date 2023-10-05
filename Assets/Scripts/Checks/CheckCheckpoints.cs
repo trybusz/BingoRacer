@@ -43,7 +43,6 @@ public class CheckCheckpoints : MonoBehaviour
         }
         if (checkpointCounter == checkpoints.Length) {
             string levelSceneName = SceneManager.GetActiveScene().name;
-            LevelAssets.InitLevelDirectories();
             string levelfolderSceneName = LevelAssets.GetLevelFolderSceneName(levelSceneName);
             LevelTimesData levelTimes = new LevelTimesData();
             float bestTime = levelTimes.GetLevelTime(levelfolderSceneName, levelSceneName);

@@ -16,11 +16,9 @@ public class ShowCheckpointTimeScript : MonoBehaviour
     public List<float> checkpointTimes;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         // get previous best checkpoints from persistent data
         string levelSceneName = SceneManager.GetActiveScene().name;
-        LevelAssets.InitLevelDirectories();
         string levelFolderSceneName = LevelAssets.GetLevelFolderSceneName(levelSceneName);
         LevelTimesData levelTime = new LevelTimesData();
         bestCheckpointTimes = levelTime.GetLevelCheckpointTimes(levelFolderSceneName, levelSceneName);
@@ -39,8 +37,7 @@ public class ShowCheckpointTimeScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
     private void OnTriggerEnter2D(Collider2D other) {
