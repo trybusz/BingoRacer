@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class MultiplayerNavigationScript : MonoBehaviour
 {
     public void backToMainMenu() {
-        GameObject manager = GameObject.FindGameObjectWithTag("MultiplayerManager");
-        manager.GetComponent<MultiplayerManagerScript>().CleanUp();
-        Destroy(manager);
         SceneManager.LoadScene("MainMenu");
     }
 

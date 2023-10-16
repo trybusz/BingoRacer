@@ -31,8 +31,16 @@ public class BingoBoard : object
         }
     }
 
+    public string GetLevelName(int index) {
+        return board[index].levelName;
+    }
+
     public float GetBestTime(int index) {
         return board[index].bestTime;
+    }
+
+    public float GetTeam(int index) {
+        return board[index].recordHolder;
     }
 
     public int SubmitTime(int index, int team, float time) {
