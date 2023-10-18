@@ -48,7 +48,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
     private bool isHost = false;
     private bool inLobby = false;
     private bool inGame = false;
-    private string joinCode = "NotSet";
+    private bool shouldLoadGame = false;
     private float hostLobbyHeartbeatTimer = 0f;
     private float listLobbiesTimer = 0f;
     private float updateLobbyTimer = 0f;
@@ -84,6 +84,15 @@ public class MultiplayerManagerScript : MonoBehaviour {
     }
 
     private void Update() {
+        if (shouldLoadGame) {
+            shouldLoadGame = false;
+            if (isHost) {
+                NetworkManager.Singleton.StartHost();
+                NetworkManager.Singleton.SceneManager.LoadScene("BingoBoardMenu", LoadSceneMode.Single);
+            } else {
+                NetworkManager.Singleton.StartClient();
+            }
+        }
         if (!inGame) {
             HostLobbyHeartBeat();
             UpdatePlayer();
@@ -132,6 +141,8 @@ public class MultiplayerManagerScript : MonoBehaviour {
             inLobby = true;
             joinCodeInput.GetComponent<TMP_InputField>().text = lobby.LobbyCode;
             
+            Debug.Log(lobby.LobbyCode);
+
             lobbyCanvas.SetActive(true);
         } catch (LobbyServiceException e){
             Debug.Log(e);
@@ -214,14 +225,14 @@ public class MultiplayerManagerScript : MonoBehaviour {
     }
 
     public async void JoinPrivateLobby() {
-        joinCode = joinCodeInput.GetComponent<TMP_InputField>().text;
+        string joinCode = joinCodeInput.GetComponent<TMP_InputField>().text;
         SetPlayerName();
 
         try {
             JoinLobbyByCodeOptions options = new() {
                 Player = player
             };
-            await Lobbies.Instance.JoinLobbyByCodeAsync(joinCode, options);
+            lobby = await Lobbies.Instance.JoinLobbyByCodeAsync(joinCode, options);
             inLobby = true;
             isHost = false;
         } catch (Exception e) {
@@ -236,8 +247,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
             JoinLobbyByIdOptions options = new() {
                 Player = player
             };
-            await Lobbies.Instance.JoinLobbyByIdAsync(joinLobby.Id, options);
-            lobby = joinLobby;
+            lobby = await Lobbies.Instance.JoinLobbyByIdAsync(joinLobby.Id, options);
             inLobby = true;
             isHost = false;
         } catch (Exception e) {
@@ -287,7 +297,6 @@ public class MultiplayerManagerScript : MonoBehaviour {
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-            NetworkManager.Singleton.StartHost();
 
             UpdateLobbyOptions options = new() {
                 IsPrivate = lobby.IsPrivate,
@@ -297,8 +306,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
             await LobbyService.Instance.UpdateLobbyAsync(lobby.Id, options);
 
             inGame = true;
-
-            NetworkManager.Singleton.SceneManager.LoadScene("BingoBoardMenu", LoadSceneMode.Single);
+            shouldLoadGame = true;
         } catch (RelayServiceException e) {
             Debug.Log(e);
         } catch (LobbyServiceException e) {
@@ -313,9 +321,9 @@ public class MultiplayerManagerScript : MonoBehaviour {
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-            NetworkManager.Singleton.StartClient();
 
             inGame = true;
+            shouldLoadGame = true;
         } catch (RelayServiceException e) {
             Debug.Log(e);
         }

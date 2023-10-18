@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BingoBoardManager : MonoBehaviour {
     private BingoBoard board;
@@ -13,7 +15,7 @@ public class BingoBoardManager : MonoBehaviour {
         networkManager = GameObject.FindGameObjectWithTag("MultiplayerManager").GetComponent<NetworkManager>();
     }
 
-    void ShowBingoLevelData(int index) {
+    public void ShowBingoLevelData(int index) {
         float bestTime = board.GetBestTime(index);
         string bestTimeStr = "Unclaimed";
         if (bestTime != 0f) {
@@ -21,11 +23,12 @@ public class BingoBoardManager : MonoBehaviour {
         }
 
         // display bestTimeStr
+        Debug.Log(bestTimeStr);
     }
 
-    void PlayBingoLevel(int index) {
+    public void PlayBingoLevel(int index) {
         string levelSceneName = board.GetLevelName(index);
-        networkManager.SceneManager.LoadScene(levelSceneName, LoadSceneMode.Additive);
+        networkManager.SceneManager.LoadScene(levelSceneName, LoadSceneMode.Single);
     }
 
     // add functions for updating the bingo board
