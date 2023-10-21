@@ -28,6 +28,10 @@ public class MultiplayerManagerScript : MonoBehaviour {
     private const string PLAYER_READY_KEY = "Ready";
     private const string LOBBY_JOIN_CODE_KEY = "JoinCode";
     private const string LOBBY_NO_JOIN_CODE = "";
+    public const string TEAM_BLUE = "Blue";
+    public const string TEAM_RED = "Red";
+    private Color BLUE = new Color(98f/255f, 161f/255f, 221f/255f);
+    private Color RED = new Color(222f/255f, 97f/255f, 100f/255f);
 
     // UI objects
     public GameObject playerNameInput;
@@ -74,7 +78,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
 
             player = new Player(AuthenticationService.Instance.PlayerId, null, new(3));
             player.Data[PLAYER_NAME_KEY] = new(PlayerDataObject.VisibilityOptions.Member, "NoName");
-            player.Data[PLAYER_TEAM_KEY] = new(PlayerDataObject.VisibilityOptions.Member, "Red");
+            player.Data[PLAYER_TEAM_KEY] = new(PlayerDataObject.VisibilityOptions.Member, TEAM_RED);
             player.Data[PLAYER_READY_KEY] = new(PlayerDataObject.VisibilityOptions.Member, "false");
 
             DontDestroyOnLoad(gameObject);
@@ -272,12 +276,12 @@ public class MultiplayerManagerScript : MonoBehaviour {
     public void ToggleTeam() {
         if (!inLobby) return;
 
-        if (player.Data[PLAYER_TEAM_KEY].Value == "Red") {
-            teamButton.GetComponent<Image>().color = new Color(98f/255f, 161f/255f, 221f/255f);
-            player.Data[PLAYER_TEAM_KEY].Value = "Blue";
+        if (player.Data[PLAYER_TEAM_KEY].Value == TEAM_RED) {
+            teamButton.GetComponent<Image>().color = BLUE;
+            player.Data[PLAYER_TEAM_KEY].Value = TEAM_BLUE;
         } else {
-            teamButton.GetComponent<Image>().color = new Color(222f/255f, 97f/255f, 100f/255f);
-            player.Data[PLAYER_TEAM_KEY].Value = "Red";
+            teamButton.GetComponent<Image>().color = RED;
+            player.Data[PLAYER_TEAM_KEY].Value = TEAM_RED;
         }
 
         playerUpdateNeeded = true;
@@ -351,5 +355,9 @@ public class MultiplayerManagerScript : MonoBehaviour {
         } catch (LobbyServiceException e) {
             Debug.Log(e);
         }
+    }
+
+    public string GetTeam() {
+        return player.Data[PLAYER_TEAM_KEY].Value;
     }
 }

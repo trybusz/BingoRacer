@@ -27,7 +27,7 @@ public class BingoBoard : object
         randomizeStringArray(levelSceneNames);
         board = new Space[25];
         for (int i = 0; i < 25; i++) {
-            board[i] = new Space(levelSceneNames[i], 0f, NONE);
+            board[i] = new Space(levelSceneNames[i], 100000000f, NONE);
         }
     }
 
@@ -39,13 +39,14 @@ public class BingoBoard : object
         return board[index].bestTime;
     }
 
-    public float GetTeam(int index) {
+    public int GetTeam(int index) {
         return board[index].recordHolder;
     }
 
     public int SubmitTime(int index, int team, float time) {
         if (time < board[index].bestTime) {
             board[index].bestTime = time;
+            board[index].recordHolder = team;
             return isBingo();
         }
         return NONE;
