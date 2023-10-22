@@ -114,7 +114,7 @@ public class LevelTimesData {
     private void InitLevelData() {
         // Zach is the worst for making me hard code this :)
         
-        List<LevelTime> Folder1_levelTimes = new List<LevelTime>();
+        List<LevelTime> Folder1_levelTimes = new();
         Folder1_levelTimes.Add(new LevelTime("OGLevel1"));
         Folder1_levelTimes.Add(new LevelTime("OGLevel2"));
         Folder1_levelTimes.Add(new LevelTime("OGLevel3"));
@@ -141,7 +141,7 @@ public class LevelTimesData {
         Folder1_levelTimes.Add(new LevelTime("OGLevel24"));
         Folder1_levelTimes.Add(new LevelTime("OGLevel25"));
 
-        List<LevelFolder> levelFolders = new List<LevelFolder>();
+        List<LevelFolder> levelFolders = new();
         levelFolders.Add(new LevelFolder("OGLevelSelect", Folder1_levelTimes));
 
         this.levelFolders = levelFolders;

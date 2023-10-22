@@ -49,29 +49,28 @@ public class Move : MonoBehaviour
     private void OnDisable() {
         playerActionControls.Disable();
     }*/
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
         playerInput = GetComponent<PlayerInput>();
         finished = false;
-}
+    }
 
-    void Update()
+    private void Update()
     {
         if (finished) return;
         GetInput();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (!HandleDash()) {
             HandleMovement();
         }
     }
 
-    void GetInput()
+    private void GetInput()
     {
         if (finished) return;
             //inputDirection = input.RetrieveMoveInput(); //Old version
@@ -100,7 +99,7 @@ public class Move : MonoBehaviour
     }
 
     // This function needs to be broken down into smaller pieces. It is confusing
-    bool HandleDash() {
+    private bool HandleDash() {
         if (dashDesired && hasDash && body.velocity.y <= .3) {
             dashDesired = false;
             hasDash = false;
@@ -127,10 +126,16 @@ public class Move : MonoBehaviour
         return false;
     }
 
-    void HandleMovement() {
+    private void HandleMovement() {
         float desiredHorizontalSpeed = inputDirection * Mathf.Max(maxSpeed - ground.Friction, 0f);
         float horizontalAcceleration = ground.OnGround ? maxGroundAcceleration : maxAirAcceleration;
         float maxSpeedChange = horizontalAcceleration * Time.deltaTime;
         body.velocity = new Vector2(Mathf.MoveTowards(body.velocity.x, desiredHorizontalSpeed, maxSpeedChange), body.velocity.y);
+    }
+
+    public void StopMovement() {
+        finished = true;
+        dashDesired = false;
+        inputDirection = 0;
     }
 }

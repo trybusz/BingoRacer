@@ -40,7 +40,7 @@ public class TutorialTextManager : MonoBehaviour
     }
 
     private Dictionary<string, string> GetInputControls(string rebinds) {
-        Dictionary<string, string> controls = new Dictionary<string, string>();
+        Dictionary<string, string> controls = new();
         // parse string of modified controls
         if (rebinds != "") {
             int index = 13; // skip over {"bindings":[

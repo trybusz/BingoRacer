@@ -7,27 +7,17 @@ public class TimeScript : MonoBehaviour
 {
     private TMP_Text timeText = null;
     
-    public bool inStart;
-    public float timeOfStart;
-    public int minutes;
-    public float seconds;
-    public float runTime;
-    public float finalTime;
-    public bool restarted;
+    private bool leftStart;
+    private float timeOfStart;
+    private float runTime;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        inStart = true;
-
+    void Start() {
+        leftStart = false;
         timeText = GameObject.Find("TimeUI").GetComponent<TMP_Text>();
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (inStart) {
+    void Update() {
+        if (!leftStart) {
             timeText.SetText("00:00.000");
         }
         else {
@@ -36,21 +26,18 @@ public class TimeScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Start") && restarted) {
-            inStart = true;
-
-        }
-        
-
-    }
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("Start")) {
-            if (restarted) {
-                timeOfStart = Time.timeSinceLevelLoad;
-            }
-            restarted = false;
-            inStart = false;
+        if (other.CompareTag("Start") && !leftStart) {
+            timeOfStart = Time.timeSinceLevelLoad;
+            leftStart = true;
         }
+    }
+
+    public float GetRunTime() {
+        return runTime;
+    }
+
+    public void RestartTime() {
+        leftStart = false;
     }
 }

@@ -30,8 +30,8 @@ public class MultiplayerManagerScript : MonoBehaviour {
     private const string LOBBY_NO_JOIN_CODE = "";
     public const string TEAM_BLUE = "Blue";
     public const string TEAM_RED = "Red";
-    private Color BLUE = new Color(98f/255f, 161f/255f, 221f/255f);
-    private Color RED = new Color(222f/255f, 97f/255f, 100f/255f);
+    private Color BLUE = new(98f/255f, 161f/255f, 221f/255f);
+    private Color RED = new(222f/255f, 97f/255f, 100f/255f);
 
     // UI objects
     public GameObject playerNameInput;
@@ -299,7 +299,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
         try {
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(lobby.MaxPlayers - 1);
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-            RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
+            RelayServerData relayServerData = new(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             UpdateLobbyOptions options = new() {
@@ -323,7 +323,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
         try {
             string joinCode = lobby.Data[LOBBY_JOIN_CODE_KEY].Value;
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
-            RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
+            RelayServerData relayServerData = new(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             inGame = true;

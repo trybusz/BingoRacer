@@ -39,7 +39,7 @@ public class Jump : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
@@ -47,20 +47,19 @@ public class Jump : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
     }
 
-    void Update()
+    private void Update()
     {
         if (finished) return;
         GetInput();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         HandleJump();
         HandleGravity();
     }
 
-    void GetInput() 
-    {
+    private void GetInput()  {
         //bool jumpDown = input.RetrieveJumpInputDown(); // Old 
         //    public static bool GetButtonDown(this InputAction action) => action.triggered && action.ReadValue<float>() > 0;
         //jumpPressed = input.RetrieveJumpInput(); // Old
@@ -75,8 +74,7 @@ public class Jump : MonoBehaviour
         }
     }
 
-    void HandleJump()
-    {
+    private void HandleJump() {
         // had to check if player just jumped because in the next frame,
         // the player would usually still be on the ground and would get
         // jump count reset to 0. This solution is probably not robust.
@@ -105,7 +103,7 @@ public class Jump : MonoBehaviour
         }
     }
 
-    void HandleGravity() {
+    private void HandleGravity() {
         Vector2 velocity = body.velocity;
         if (moveScript.inDash) {
             body.velocity = new Vector2(body.velocity.x, 0.0f);
@@ -130,8 +128,7 @@ public class Jump : MonoBehaviour
         }
     }
 
-    void performJump() 
-    {
+    private void performJump() {
         justJumped = true;
         jumpsUsed += 1;
         jumpDesired = false;
@@ -139,5 +136,11 @@ public class Jump : MonoBehaviour
         if (jumpSpeed > body.velocity.y) {
             body.velocity = new Vector2(body.velocity.x, jumpSpeed);
         }
+    }
+
+    public void StopMovement() {
+        finished = true;
+        jumpDesired = false;
+        jumpPressed = false;
     }
 }

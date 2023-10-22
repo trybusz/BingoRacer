@@ -10,25 +10,25 @@ public class RespawnScript : MonoBehaviour
     public Vector3 spawnPosition;
     //GameObject lastCheckpoint;
 
-    public bool finished;
+    private bool finished;
 
-    //new input stuff
     private PlayerInput playerInput;
 
-    // Start is called before the first frame update
-    void Start() {
+    private void Start() {
         spawnPosition = GameObject.FindGameObjectWithTag("Start").transform.position;
         playerInput = GetComponent<PlayerInput>();
         timeScript = gameObject.GetComponent<TimeScript>();
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
         //if (input.RetrieveSpawnInputDown()) { // Old
         if (!finished && playerInput.actions["Restart"].ReadValue<float>() == 1) {
-            timeScript.restarted = true;
-            this.gameObject.transform.position = spawnPosition;
-            
+            gameObject.transform.position = spawnPosition;
+            timeScript.RestartTime();
         }
+    }
+
+    public void SetFinished() {
+        finished = true;
     }
 }

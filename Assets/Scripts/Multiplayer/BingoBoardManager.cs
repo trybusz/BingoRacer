@@ -11,8 +11,8 @@ public class BingoBoardManager : MonoBehaviour {
     private NetworkManager networkManager;
     private MultiplayerManagerScript multiplayerScript;
 
-    private Color BLUE = new Color(98f/255f, 161f/255f, 221f/255f);
-    private Color RED = new Color(222f/255f, 97f/255f, 100f/255f);
+    private Color BLUE = new(98f/255f, 161f/255f, 221f/255f);
+    private Color RED = new(222f/255f, 97f/255f, 100f/255f);
 
     void Start() {
         board = new BingoBoard();

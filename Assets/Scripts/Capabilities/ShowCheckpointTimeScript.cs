@@ -20,7 +20,7 @@ public class ShowCheckpointTimeScript : MonoBehaviour
         // get previous best checkpoints from persistent data
         string levelSceneName = SceneManager.GetActiveScene().name;
         string levelFolderSceneName = LevelAssets.GetLevelFolderSceneName(levelSceneName);
-        LevelTimesData levelTime = new LevelTimesData();
+        LevelTimesData levelTime = new();
         bestCheckpointTimes = levelTime.GetLevelCheckpointTimes(levelFolderSceneName, levelSceneName);
         // initialize checkpoint text objects
         checkpointText = GameObject.Find("CheckpointTime").GetComponent<TMP_Text>();
@@ -42,7 +42,7 @@ public class ShowCheckpointTimeScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Checkpoint") && other.GetComponent<CheckpointScript>().collected == false) {
-            float currRunTime = timeScript.runTime;
+            float currRunTime = timeScript.GetRunTime();
             float checkpointTimeDiff = 0f;
             if (bestCheckpointTimes != null && bestCheckpointTimes.Count > checkpointCounter) {
                 checkpointTimeDiff = currRunTime - bestCheckpointTimes[checkpointCounter];

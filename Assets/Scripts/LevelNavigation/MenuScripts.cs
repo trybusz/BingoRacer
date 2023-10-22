@@ -7,25 +7,16 @@ public class MenuScripts : MonoBehaviour
 {
 
     public GameObject menuPanel;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void toMainMenu() {
+    public void ToMainMenu() {
         SceneManager.LoadScene("MainMenu");
     }
-    public void openMenu() {
+
+    public void OpenMenu() {
         menuPanel.SetActive(true);
     }
-    public void closeMenu() {
+    
+    public void CloseMenu() {
         menuPanel.SetActive(false);
     }
 }

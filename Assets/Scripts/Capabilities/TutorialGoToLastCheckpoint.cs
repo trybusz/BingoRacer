@@ -13,7 +13,7 @@ public class TutorialGoToLastCheckpoint : MonoBehaviour
     public GameObject[] checkpoints;
     //GameObject lastCheckpoint;
 
-    public bool finished;
+    private bool finished;
 
     //new input stuff
     private PlayerInput playerInput;
@@ -55,5 +55,9 @@ public class TutorialGoToLastCheckpoint : MonoBehaviour
             checkpointPosition = collision.transform.position;
             collectedCheckpoint = true;
         }
+    }
+
+    public void SetFinished() {
+        finished = true;
     }
 }
