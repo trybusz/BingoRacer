@@ -18,10 +18,12 @@ public class MainMenuNavigationScript : MonoBehaviour
     }
 
     public void toSingleplayer() {
+        SceneContext.SetElement("GameMode", "Singleplayer");
         SceneManager.LoadScene("SingleplayerMenu");
     }
 
     public void toMultiplayer() {
+        SceneContext.SetElement("GameMode", "Multiplayer");
         SceneManager.LoadScene("MultiplayerMenu");
     }
 

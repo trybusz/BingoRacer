@@ -1,12 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuScripts : MonoBehaviour
 {
 
-    public GameObject menuPanel;
+    private GameObject menuPanel;
+
+    private void Start() {
+        menuPanel = GameObject.Find("InLevelMenu");
+        menuPanel.SetActive(false);
+    }
 
     public void ToMainMenu() {
         SceneManager.LoadScene("MainMenu");

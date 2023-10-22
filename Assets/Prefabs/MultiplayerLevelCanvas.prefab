@@ -1971,7 +1971,7 @@ GameObject:
   - component: {fileID: 2010038163586039468}
   - component: {fileID: 2010038163586039469}
   m_Layer: 5
-  m_Name: SinglePlayerLevelCanvas
+  m_Name: MultiplayerLevelCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
