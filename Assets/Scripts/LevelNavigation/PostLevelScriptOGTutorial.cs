@@ -3,26 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PostLevelScriptOGTutorial : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class PostLevelScriptOGTutorial : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     public void backToMainMenu() {
+        SceneContext.ClearElement("Level");
         SceneManager.LoadScene("MainMenu");
     }
 
     public void restartLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        string levelSceneName = SceneContext.GetElement("Level");
+        SceneManager.LoadScene(levelSceneName);
     }
-
 }

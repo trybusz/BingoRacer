@@ -72,6 +72,8 @@ public class MultiplayerManagerScript : MonoBehaviour {
     async void Start() {
         lobbyCanvas.SetActive(false);
         try {
+            DontDestroyOnLoad(gameObject);
+
             await UnityServices.InitializeAsync();
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
@@ -81,7 +83,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
             player.Data[PLAYER_TEAM_KEY] = new(PlayerDataObject.VisibilityOptions.Member, TEAM_RED);
             player.Data[PLAYER_READY_KEY] = new(PlayerDataObject.VisibilityOptions.Member, "false");
 
-            DontDestroyOnLoad(gameObject);
+            GetLobbyUpdate();
         } catch (Exception e) {
             Debug.Log(e);
         }
@@ -143,9 +145,6 @@ public class MultiplayerManagerScript : MonoBehaviour {
             hostLobbyHeartbeatTimer = Time.time + HOST_LOBBY_HEARTBEAT_PERIOD;
             isHost = true;
             inLobby = true;
-            joinCodeInput.GetComponent<TMP_InputField>().text = lobby.LobbyCode;
-            
-            Debug.Log(lobby.LobbyCode);
 
             lobbyCanvas.SetActive(true);
         } catch (LobbyServiceException e){
@@ -218,6 +217,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
 
             foreach (Lobby lobbyEntry in lobbyList) {
                 GameObject currEntry = Instantiate(lobbyEntryPrefab, lobbyListHolder.transform);
+                currEntry.GetComponent<Button>().onClick.AddListener(() => JoinLobby(lobbyEntry));
                 Transform lobbyName = currEntry.transform.GetChild(0);
                 Transform playerCount = currEntry.transform.GetChild(1);
                 lobbyName.GetComponent<TextMeshProUGUI>().SetText(lobbyEntry.Name);
@@ -239,6 +239,8 @@ public class MultiplayerManagerScript : MonoBehaviour {
             lobby = await Lobbies.Instance.JoinLobbyByCodeAsync(joinCode, options);
             inLobby = true;
             isHost = false;
+
+            lobbyCanvas.SetActive(true);
         } catch (Exception e) {
             Debug.Log(e);
         }
@@ -254,6 +256,8 @@ public class MultiplayerManagerScript : MonoBehaviour {
             lobby = await Lobbies.Instance.JoinLobbyByIdAsync(joinLobby.Id, options);
             inLobby = true;
             isHost = false;
+
+            lobbyCanvas.SetActive(true);
         } catch (Exception e) {
             Debug.Log(e);
         }

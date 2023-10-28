@@ -32,20 +32,21 @@ public class BingoBoardManager : MonoBehaviour {
     }
 
     public void PlayBingoLevel(int index) {
-        // temporary code for testing purposes
-        int team = multiplayerScript.GetTeam() == MultiplayerManagerScript.TEAM_RED ? BingoBoard.TEAM1 : BingoBoard.TEAM2;
-        int winner = board.SubmitTime(index, team, 1f);
-        if (winner != BingoBoard.NONE) {
-            for (int i = 0; i < 25; i++) {
-                board.SubmitTime(i, winner, 0f);
-                UpdateSquareColor(i);
-            }
-            // declare winner!
-            return;
-        }
-        UpdateSquareColor(index);
-        // string levelSceneName = board.GetLevelName(index);
-        // networkManager.SceneManager.LoadScene(levelSceneName, LoadSceneMode.Single);
+        // // temporary code for testing purposes
+        // int team = multiplayerScript.GetTeam() == MultiplayerManagerScript.TEAM_RED ? BingoBoard.TEAM1 : BingoBoard.TEAM2;
+        // int winner = board.SubmitTime(index, team, 1f);
+        // if (winner != BingoBoard.NONE) {
+        //     for (int i = 0; i < 25; i++) {
+        //         board.SubmitTime(i, winner, 0f);
+        //         UpdateSquareColor(i);
+        //     }
+        //     // declare winner!
+        // }
+        // UpdateSquareColor(index);
+        string levelSceneName = board.GetLevelName(index);
+        SceneContext.SetElement("Level", levelSceneName);
+        SceneContext.SetElement("BingoIndex", index.ToString());
+        SceneManager.LoadScene(levelSceneName, LoadSceneMode.Additive);
     }
 
     private void UpdateSquareColor(int index) {
@@ -58,6 +59,11 @@ public class BingoBoardManager : MonoBehaviour {
         }
     }
 
+    public void SubmitLevelTime(int index, float time) {
+        int team = multiplayerScript.GetTeam() == MultiplayerManagerScript.TEAM_RED ? BingoBoard.TEAM1 : BingoBoard.TEAM2;
+        board.SubmitTime(index, team, time);
+        UpdateSquareColor(index);
+    }
     // add functions for updating the bingo board
     // when player beats a level
 }

@@ -32,6 +32,8 @@ public class MainMenuNavigationScript : MonoBehaviour
     }
 
     public void toTutorial() {
+        SceneContext.SetElement("GameMode", "Singleplayer");
+        SceneContext.SetElement("Level", "OGTutorial");
         SceneManager.LoadScene("OGTutorial");
     }
 

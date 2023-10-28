@@ -3,8 +3,8 @@ using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public static class PersistentDataSaveLoad
-{
+public static class PersistentDataSaveLoad {
+    
     static string persistentDataPath;
 
     static PersistentDataSaveLoad() {

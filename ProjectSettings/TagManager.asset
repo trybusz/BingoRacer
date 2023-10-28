@@ -41,9 +41,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Zones
-    uniqueID: 3167737181
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3167737181
+    locked: 0
+  - name: LevelBackground
+    uniqueID: 2344815261
+    locked: 0
+  - name: LevelMain
+    uniqueID: 3201375577
+    locked: 0
+  - name: LevelForeground
+    uniqueID: 2877763417
+    locked: 0
+  - name: Foreground
+    uniqueID: 635907705
     locked: 0

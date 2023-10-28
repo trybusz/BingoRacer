@@ -3,24 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelSelectNavigationScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void toSingleplayerMenu() {
+public class LevelSelectNavigationScript : MonoBehaviour {
+    
+    public void ToSingleplayerMenu() {
         SceneManager.LoadScene("SingleplayerMenu");
     }
 
-    public void toLevel(string levelSceneName) {
+    public void ToLevel(string levelSceneName) {
+        SceneContext.SetElement("Level", levelSceneName);
         SceneManager.LoadScene(levelSceneName);
     }
 }

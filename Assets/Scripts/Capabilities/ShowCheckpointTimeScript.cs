@@ -18,7 +18,7 @@ public class ShowCheckpointTimeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         // get previous best checkpoints from persistent data
-        string levelSceneName = SceneManager.GetActiveScene().name;
+        string levelSceneName = SceneContext.GetElement("Level");
         string levelFolderSceneName = LevelAssets.GetLevelFolderSceneName(levelSceneName);
         LevelTimesData levelTime = new();
         bestCheckpointTimes = levelTime.GetLevelCheckpointTimes(levelFolderSceneName, levelSceneName);

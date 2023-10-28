@@ -5,22 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class PostLevelScript : MonoBehaviour {
 
-    public void backToLevelSelect() {
-        SceneManager.LoadScene(LevelAssets.GetLevelFolderSceneName(SceneManager.GetActiveScene().name));
+    public void BackToLevelSelect() {
+        string levelSceneName = SceneContext.GetElement("Level");
+        SceneContext.ClearElement("Level");
+        SceneManager.LoadScene(LevelAssets.GetLevelFolderSceneName(levelSceneName));
     }
 
-    public void restartLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    public void RestartLevel() {
+        string levelSceneName = SceneContext.GetElement("Level");
+        SceneManager.LoadScene(levelSceneName);
     }
 
-    public void nextLevel() {
-        string currentLevelName = SceneManager.GetActiveScene().name;
-        string nextLevelName = LevelAssets.GetNextLevelSceneName(currentLevelName);
+    public void NextLevel() {
+        string levelSceneName = SceneContext.GetElement("Level");
+        string nextLevelName = LevelAssets.GetNextLevelSceneName(levelSceneName);
         if (nextLevelName != null) {
+            SceneContext.SetElement("Level", nextLevelName);
             SceneManager.LoadScene(nextLevelName);
         }
         else {
-            SceneManager.LoadScene(LevelAssets.GetLevelFolderSceneName(currentLevelName));
+            SceneManager.LoadScene(LevelAssets.GetLevelFolderSceneName(levelSceneName));
         }
+    }
+
+    public void BackToBingoBoard() {
+        string currentLevelSceneName = SceneContext.GetElement("Level");
+        SceneContext.ClearElement("Level");
+        SceneManager.UnloadSceneAsync(currentLevelSceneName);
     }
 }

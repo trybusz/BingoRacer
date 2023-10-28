@@ -1,6 +1,7 @@
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
+using System;
 
 public class CheckCheckpoints : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CheckCheckpoints : MonoBehaviour
     private TimeScript timeScript;
     private ShowCheckpointTimeScript showCheckpointTimeScript;
     private GameObject player;
+    private string gameMode;
 
     void Start() {
         finalTimeText = GameObject.Find("FinalTimeUI").GetComponent<TMP_Text>();
@@ -20,6 +22,7 @@ public class CheckCheckpoints : MonoBehaviour
 
         endPanel = GameObject.Find("FinishedLevelCanvas");
         endPanel.SetActive(false);
+        gameMode = SceneContext.GetElement("GameMode");
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -27,7 +30,7 @@ public class CheckCheckpoints : MonoBehaviour
             return;
         }
 
-        string levelSceneName = SceneManager.GetActiveScene().name;
+        string levelSceneName = SceneContext.GetElement("Level");
         string levelfolderSceneName = LevelAssets.GetLevelFolderSceneName(levelSceneName);
         LevelTimesData levelTimes = new();
         float bestTime = levelTimes.GetLevelTime(levelfolderSceneName, levelSceneName);
@@ -35,12 +38,10 @@ public class CheckCheckpoints : MonoBehaviour
         float finalTime = timeScript.GetRunTime();
         string finalTimeString = LevelAssets.ConvertTimeToString(finalTime);
 
-        player.GetComponent<Move>().StopMovement();
-        player.GetComponent<Jump>().StopMovement();
-        player.GetComponent<GoToLastCheckpoint>().SetFinished();
-        player.GetComponent<RespawnScript>().SetFinished();
+        StopPlayer();
+        ActivateEndScreen();
+        UpdateBingoBoard(finalTime);
 
-        endPanel.SetActive(true);
         finalTimeText.SetText("Time: " + finalTimeString);
         gameObject.GetComponent<DisplayMedalsScript>().displayMedals(finalTime);
 
@@ -57,5 +58,29 @@ public class CheckCheckpoints : MonoBehaviour
             }
         }
         return true;
+    }
+
+    private void StopPlayer() {
+        player.GetComponent<Move>().StopMovement();
+        player.GetComponent<Jump>().StopMovement();
+        player.GetComponent<GoToLastCheckpoint>().SetFinished();
+        player.GetComponent<RespawnScript>().SetFinished();
+    }
+
+    private void ActivateEndScreen() {
+        endPanel.SetActive(true);
+        if (gameMode == null || gameMode.Equals("Singleplayer")) {
+            GameObject.Find("MPPostOptions").SetActive(false);
+        } else {
+            GameObject.Find("SPPostOptions").SetActive(false);
+        }
+    }
+
+    private void UpdateBingoBoard(float completionTime) {
+        if (gameMode != null && gameMode.Equals("Multiplayer")) {
+            int bingoIndex = int.Parse(SceneContext.GetElement("BingoIndex"));
+            BingoBoardManager bingoManager = GameObject.Find("BoardLogic").GetComponent<BingoBoardManager>();
+            bingoManager.SubmitLevelTime(bingoIndex, completionTime);
+        }
     }
 }

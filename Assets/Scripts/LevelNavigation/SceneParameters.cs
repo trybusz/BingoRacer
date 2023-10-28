@@ -31,7 +31,7 @@
             context.Clear();
         }
 
-        public static void ClearElement(string key, string value) {
+        public static void ClearElement(string key) {
             context.Remove(key);
         }
     }
