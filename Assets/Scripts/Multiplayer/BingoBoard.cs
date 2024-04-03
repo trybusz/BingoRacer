@@ -1,26 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class BingoBoard : object
-{
+public class BingoBoard : INetworkSerializable {
 
-    public const int NONE = 1;
-    public const int TEAM1 = 2;
-    public const int TEAM2 = 4;
+    public const byte NONE = 1;
+    public const byte TEAM1 = 2;
+    public const byte TEAM2 = 4;
 
-    private struct Space {
+    private struct Space : INetworkSerializable {
         public string levelName;
         public float bestTime;
-        public int recordHolder;
-        public Space(string name, float time, int holder) {
+        public byte recordHolder;
+        public Space(string name, float time, byte holder) {
             levelName = name;
             bestTime = time;
             recordHolder = holder;
         }
+
+        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter {
+            if (serializer.IsReader) {
+                ushort levelKey = 0;
+                serializer.SerializeValue(ref levelKey);
+                levelName = LevelAssets.GetLevelSceneNameFromKey(levelKey);
+            } else {
+                ushort levelKey = LevelAssets.GetLevelKeyFromSceneName(levelName);
+                serializer.SerializeValue(ref levelKey);
+            }
+            serializer.SerializeValue(ref bestTime);
+            serializer.SerializeValue(ref recordHolder);
+        }
     }
 
     private Space[] board;
+
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter {
+        if (board == null) {
+            board = new Space[25];
+        }
+        for (int i = 0; i < board.Length; i++) {
+            board[i].NetworkSerialize(serializer);
+        }
+    }
 
     public BingoBoard() {
         string[] levelSceneNames = LevelAssets.GetBingoLevelSceneNames();
@@ -39,11 +59,11 @@ public class BingoBoard : object
         return board[index].bestTime;
     }
 
-    public int GetTeam(int index) {
+    public byte GetTeam(int index) {
         return board[index].recordHolder;
     }
 
-    public int SubmitTime(int index, int team, float time) {
+    public byte SubmitTime(int index, byte team, float time) {
         if (time < board[index].bestTime) {
             board[index].bestTime = time;
             board[index].recordHolder = team;
@@ -62,9 +82,9 @@ public class BingoBoard : object
         }
     }
 
-    private int isBingo() {
+    private byte isBingo() {
         // rows and columns
-        int flag;
+        byte flag;
         for (int i = 0; i < 5; i++) {
             // check vertically
             flag = board[i].recordHolder;

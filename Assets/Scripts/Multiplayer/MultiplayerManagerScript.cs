@@ -6,7 +6,6 @@ using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
-using System.Threading.Tasks;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using System;
@@ -45,6 +44,7 @@ public class MultiplayerManagerScript : MonoBehaviour {
     // utilities
     public GameObject lobbyEntryPrefab;
     public GameObject playerEntryPrefab;
+    public GameObject bingoBoardPrefab;
 
     // state
     private Player player = null;
@@ -363,5 +363,17 @@ public class MultiplayerManagerScript : MonoBehaviour {
 
     public string GetTeam() {
         return player.Data[PLAYER_TEAM_KEY].Value;
+    }
+
+    public Lobby GetLobby() {
+        return lobby;
+    }
+
+    public string GetPlayerId() {
+        return player.Id;
+    }
+
+    public bool IsHost() {
+        return isHost;
     }
 }

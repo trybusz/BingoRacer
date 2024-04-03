@@ -9612,6 +9612,7 @@ GameObject:
   - component: {fileID: 3003061876216285257}
   - component: {fileID: 2746330698306710741}
   - component: {fileID: 7861049016823689732}
+  - component: {fileID: 8011867240948523375}
   m_Layer: 5
   m_Name: BingoBoard
   m_TagString: Untagged
@@ -9631,6 +9632,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 8513810259198325393}
   - {fileID: 7087987989178464053}
   - {fileID: 4739305038257628041}
   - {fileID: 3624294715901719816}
@@ -9658,7 +9660,6 @@ RectTransform:
   - {fileID: 1536106767452987830}
   - {fileID: 7698198992073139060}
   - {fileID: 1901649411163230637}
-  - {fileID: 8513810259198325393}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9705,3 +9706,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8011867240948523375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9217025939065514367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

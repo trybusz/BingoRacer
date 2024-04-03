@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -70,8 +71,11 @@ public static class LevelAssets : object
         )
     };
 
+    // levelDirectoryIndices maps a level scene name to the index of its directory.
     public static Dictionary<string, int> levelDirectoryIndices = new();
+    // levelIndices maps a level scene name to the index of the level in its directory.
     public static Dictionary<string, int> levelIndices = new();
+    // bingoLevelSceneNames contains a list of every bingo level scene name that is valid for use in a bingo board.
     public static List<string> bingoLevelSceneNames = new();
 
     public static void InitLevelDirectories() {
@@ -131,6 +135,20 @@ public static class LevelAssets : object
             names[i] = bingoLevelSceneNames[i];
         }
         return names;
+    }
+
+    public static ushort GetLevelKeyFromSceneName(string levelSceneName) {
+        InitLevelDirectories();
+        int directoryIndex = levelDirectoryIndices[levelSceneName];
+        int levelIndex = levelIndices[levelSceneName];
+        return (ushort)(directoryIndex<<8 | levelIndex);
+    }
+
+    public static string GetLevelSceneNameFromKey(ushort levelKey) {
+        InitLevelDirectories();
+        int directoryIndex = levelKey>>8;
+        int levelIndex = levelKey & 0xff;
+        return levelDirectories[directoryIndex].levels[levelIndex].sceneName;
     }
 
     public static string ConvertTimeToString(float time) {

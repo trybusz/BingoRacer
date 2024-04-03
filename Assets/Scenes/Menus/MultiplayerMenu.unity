@@ -2384,6 +2384,7 @@ MonoBehaviour:
   teamButton: {fileID: 77080675}
   lobbyEntryPrefab: {fileID: 1617564690190364136, guid: 871600edd76c6744f8c6e9de53c4a781, type: 3}
   playerEntryPrefab: {fileID: 7873775360707231499, guid: 1e51dd33c05a92a4ca4f2e9842f5e809, type: 3}
+  bingoBoardPrefab: {fileID: 9217025939065514367, guid: 6731c7d60391f784f800a4ca2fccaaf5, type: 3}
 --- !u!1 &805474537
 GameObject:
   m_ObjectHideFlags: 0
